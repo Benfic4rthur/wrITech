@@ -4,7 +4,7 @@ const year = date.getFullYear();
 const index = () => {
     return (
         <footer className={styles.footer}>
-            <h3>Escreva sobre seus interesses!</h3>
+            <h3>Compartilhe seu conhecimento!</h3>
             <p>wrITech &copy; {year}</p>
         </footer>
     );

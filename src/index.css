@@ -21,7 +21,7 @@ nav button {
   text-decoration: none;
   background-color: transparent;
   border: none;
-  color: #000;
+  color: white;
   transition: .4s;
   font-size: 1em;
   cursor: pointer;
@@ -62,7 +62,7 @@ textarea {
   background-color: transparent;
 }
 .btn{
-  background-color: #1a8918;
+  background-color: #095c85;;
   color: white;
   text-align: center;
   cursor: pointer;
@@ -72,6 +72,7 @@ textarea {
   border: none;
   padding: 10px 15px;
   font-size: 1em;
+  transition: .8s;
 }
 .btn.btn-dark{
   background-color: #000;
@@ -85,11 +86,14 @@ textarea {
   padding: 7px 30px;
 }
 .btn:hover{
-  background-color: #0f730c;
+  background-color: #307ea4;;
   color: #fff;
+  transition: .5s;
+  border-radius: 25px;
 }
 .btn.btn-outline:hover{
   background-color: #000;
+
 }
 .btn.btn-danger:hover{
   background-color: #dc3545;

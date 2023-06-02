@@ -1,13 +1,18 @@
 .navbar {
     display: flex;
-    box-shadow: rgba(0, 0, 0, .24) 0px -3px 10px 0px;
+    box-shadow: rgba(0, 0, 0, .24) 0px -3px 100px 0px;
     justify-content: space-between;
     align-items: center;
     padding: .5em 2em;
+    background-color: #095c85;
 }
 
 .brand {
     font-size: 1.2em;
+    color: white;
+    border: 5px solid rgb(194, 193, 193);
+    padding: 5px;
+    border-radius: 25px;
 }
 
 .brand span {
@@ -31,5 +36,5 @@
 .active {
     background-color: #000;
     color: aliceblue;
-    border-radius: 5px;
+    border-radius: 25px;
   }
