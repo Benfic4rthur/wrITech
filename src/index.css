@@ -1,14 +1,20 @@
 body {
-  background-color: #f6fcff;
+  background: linear-gradient(120.21deg, #888f93 11.18%, #0c6870 74.17%);
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
 }
 
+input,
+textarea{
+font-size: 14px;
+  color: rgba(0, 0, 0, 0.9);
+  font-family: "Montserrat", sans-serif;
+}
+
 input::placeholder,
 textarea::placeholder {
-  font-family: "Montserrat", sans-serif;
-  color: #aaa;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 input:focus,
@@ -60,7 +66,9 @@ textarea {
   border-bottom: 1px solid #ccc;
   padding: .8em 0;
   background-color: transparent;
+  border-radius: 3px;
 }
+
 .btn{
   background-color: #095c85;;
   color: white;
@@ -86,7 +94,7 @@ textarea {
   padding: 7px 30px;
 }
 .btn:hover{
-  background-color: #307ea4;;
+  background-color: #307ea4;
   color: #fff;
   transition: .5s;
   border-radius: 25px;

@@ -1,0 +1,30 @@
+.about{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.about p{
+    color: white;
+}
+.about span{
+    color: white;
+}
+.about img{
+    border-radius: 150px;
+    width: 100px;
+}
+.boxperson{
+    background-color: rgba(245, 245, 220, 0.273);
+    backdrop-filter: blur( 13.5px );
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.176);
+}
+
+.bio p{
+    color: black;
+    width: 400px;
+    font-size: .9em;
+    margin-top: -10px;
+}

@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth';
 import { useState, useEffect } from 'react';
 
-export const useAuthentication = () => {
+export const UseAuthentication = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
   const [canceled, setCanceled] = useState(false);
@@ -20,7 +20,7 @@ export const useAuthentication = () => {
       return;
     }
   }
-
+  //register
   const createUser = async data => {
     checkIfIsCanceled();
     setLoading(true);
@@ -51,7 +51,11 @@ export const useAuthentication = () => {
     }
     setLoading(false);
   };
-
+  //logout
+  const logout = () => {
+    checkIfIsCanceled();
+    signOut(auth);
+  }
   useEffect(() => {
     return () => setCanceled(true);
   }, []);
@@ -62,5 +66,6 @@ export const useAuthentication = () => {
     error,
     loading,
     successMessage, // Adicionar a mensagem de sucesso ao objeto retornado
+    logout,
   };
 };

@@ -6883,6 +6883,13 @@ makeerror@1.0.12:
   dependencies:
     tmpl "1.0.5"
 
+md@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/md/-/md-0.6.0.tgz#5a42cebfc50ef09f87f694ddcff1e3dfc0ab6ca6"
+  integrity sha512-dg63h89eAeNtubkGRLQ3/mkwis8Ye7uyZ7U0sMxFYx00231VKIb09PfoEH/Gdd2NIc+iSTDYCforOmT08JHsOA==
+  dependencies:
+    slugo "^0.2.1"
+
 mdn-data@2.0.14:
   version "2.0.14"
   resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"
@@ -8237,6 +8244,11 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
+react-icons@^4.9.0:
+  version "4.9.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.9.0.tgz#ba44f436a053393adb1bdcafbc5c158b7b70d2a3"
+  integrity sha512-ijUnFr//ycebOqujtqtV9PFS7JjhWg0QU6ykURVHuL4cbofvRCf3f6GMn9+fBktEFQOIVZnuAYLZdiyadRQRFg==
+
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -8808,6 +8820,11 @@ slash@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-4.0.0.tgz#2422372176c4c6c5addb5e2ada885af984b396a7"
   integrity sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==
+
+slugo@^0.2.1:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/slugo/-/slugo-0.2.3.tgz#2c602fe1e76d5fa3c6f75223537fbd80ae33929c"
+  integrity sha512-4nav6mk321IWKaWxgvygjp2JB0d5sNGgkPUJ+EGQZmmcvuXS+4DwdhhPa9L8WBg6fVQDID3PO+t6wYM1NqVbkA==
 
 sockjs@^0.3.24:
   version "0.3.24"
