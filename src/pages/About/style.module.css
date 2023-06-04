@@ -11,8 +11,19 @@
     color: white;
 }
 .about img{
-    border-radius: 150px;
+    border-radius: 300px;
     width: 100px;
+    height: 95px;
+    transform: rotateY(0deg);
+    transition: all 0.7s;
+    filter: drop-shadow(1px 2px 10px rgb(80, 73, 84));
+}
+.about img:hover{
+    filter: drop-shadow(1px 2px 10px white);
+    transform: rotateY(360deg);
+    transition: all 0.7s;
+    width: 100px;
+    height: 95px;
 }
 .boxperson{
     background-color: rgba(245, 245, 220, 0.273);

@@ -7,12 +7,8 @@
     background-color: transparent;
 }
 
-.brand {
-    font-size: 1.2em;
-    color: black;
-    border: 5px solid rgb(194, 193, 193);
-    padding: 5px;
-    border-radius: 25px;
+.brand img{
+    width: 140px;
 }
 
 .brand span {
@@ -35,7 +31,8 @@
 }
 
 .active {
-    background-color: #074564;
+    background-color: inherit;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.176);
     color: aliceblue;
     border-radius: 25px;
 }

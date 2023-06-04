@@ -4,6 +4,7 @@ import { UseAuthentication } from '../../hooks/useAuthentication';
 import { UseAuthValue } from '../../context/AuthContext';
 // importa botão de logout do material design
 import { MdLogout } from 'react-icons/md';
+import logo from '../../assets/writech.png';
 
 const index = () => {
   const { user } = UseAuthValue();
@@ -11,7 +12,7 @@ const index = () => {
   return (
     <nav className={styles.navbar}>
       <NavLink to='/' className={styles.brand}>
-        wr<span style={{ color: '#ccc' }}>IT</span>ech
+        <img src={logo} alt='logo'/> 
       </NavLink>
       <ul className={styles.links_list}>
         {!user && (

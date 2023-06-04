@@ -1,11 +1,12 @@
 import styles from './style.module.css';
+import logo from '../../assets/logofooter.png';
 const date = new Date();
 const year = date.getFullYear();
 const index = () => {
     return (
         <footer className={styles.footer}>
             <h3>Compartilhe seu conhecimento!</h3>
-            <p>wrITech &copy; {year}</p>
+            <p><img src={logo} alt='logo'/>  &copy; {year}</p>
         </footer>
     );
 };
