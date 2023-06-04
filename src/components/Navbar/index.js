@@ -14,19 +14,14 @@ const index = () => {
         wr<span style={{ color: '#ccc' }}>IT</span>ech
       </NavLink>
       <ul className={styles.links_list}>
-        <li>
-          <NavLink to='/' className={({ isActive }) => (isActive ? styles.active : '')}>
-            Home
-          </NavLink>
-        </li>
         {!user && (
           <>
-            <li>
+            <li title='entrar'>
               <NavLink to='/login' className={({ isActive }) => (isActive ? styles.active : '')}>
                 Entrar
               </NavLink>
             </li>
-            <li>
+            <li title='cadastrar'>
               <NavLink to='/register' className={({ isActive }) => (isActive ? styles.active : '')}>
                 Cadastro
               </NavLink>
@@ -35,7 +30,12 @@ const index = () => {
         )}
         {user && (
           <>
-            <li>
+            <li title='home'>
+              <NavLink to='/' className={({ isActive }) => (isActive ? styles.active : '')}>
+                Home
+              </NavLink>
+            </li>
+            <li title='dashboard'>
               <NavLink
                 to='/dashboard'
                 className={({ isActive }) => (isActive ? styles.active : '')}
@@ -43,7 +43,7 @@ const index = () => {
                 Dashboard
               </NavLink>
             </li>
-            <li>
+            <li title='novo post'>
               <NavLink
                 to='/create-post'
                 className={({ isActive }) => (isActive ? styles.active : '')}
@@ -53,14 +53,14 @@ const index = () => {
             </li>
           </>
         )}
-        <li>
+        <li title='sobre'>
           <NavLink to='/about' className={({ isActive }) => (isActive ? styles.active : '')}>
             Sobre
           </NavLink>
         </li>
         {user && (
-          <li>
-            <NavLink onClick={logout} className={({ isActive }) => styles.Lo}>
+          <li title='Logout'>
+            <NavLink onClick={logout} className={({ isActive }) => styles.Lo} to='/'>
               <MdLogout />
             </NavLink>
           </li>

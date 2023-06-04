@@ -51,7 +51,8 @@ const LoginLayout = ( redirectPath, Element) => {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route index element={<Layout />}>
+    
+    <Routes index element={<Layout />}>
       <Route path='dashboard' element={<Dashboard />} />
       <Route path='about' element={<About />} />
       <Route path='/' element={<Home />} >
@@ -62,7 +63,7 @@ const router = createBrowserRouter(
 
       <Route path='/dashboard' element={!user ? <Navigate to='/login' /> : <Dashboard />} />
       <Route path='/create-post' element={!user ? <Navigate to='/login' /> : <CreatePost />} />
-    </>
+    </Routes>
   ),
 );
 

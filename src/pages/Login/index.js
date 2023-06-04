@@ -6,7 +6,7 @@ const Index = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const { createUser, error: authError, loading } = UseAuthentication();
+  const { login, error: authError, loading } = UseAuthentication();
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -15,7 +15,7 @@ const Index = () => {
       email,
       password,
     };
-    const res = await createUser(user);
+    const res = await login(user);
     console.log(res);
   };
   useEffect(() => {
@@ -25,41 +25,41 @@ const Index = () => {
   }, [authError]);
   return (
     <div className={styles.container}>
-    <div className={styles.login}>
-      <h1>Entrar</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <span>E-mail:</span>
-          <input
-            type='email'
-            name='email'
-            required
-            placeholder='E-mail do usuário'
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          <span>Senha:</span>
-          <input
-            type='password'
-            name='password'
-            required
-            placeholder='Senha do usuário'
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-        </label>
-        {!loading && <button className='btn'>Entrar</button>}
-        {loading && (
-          <button className='btn' disabled>
-            Aguarde...
-          </button>
-        )}
-        {error && <p className='error'>{error}</p>}
-      </form>
+      <div className={styles.login}>
+        <h1>Entrar</h1>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <span>E-mail:</span>
+            <input
+              type='email'
+              name='email'
+              required
+              placeholder='E-mail do usuário'
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </label>
+          <label>
+            <span>Senha:</span>
+            <input
+              type='password'
+              name='password'
+              required
+              placeholder='Senha do usuário'
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </label>
+          {!loading && <button className='btn'>Entrar</button>}
+          {loading && (
+            <button className='btn' disabled>
+              Aguarde...
+            </button>
+          )}
+          {error && <p className='error'>{error}</p>}
+        </form>
+      </div>
     </div>
-  </div>
   );
 };
 
