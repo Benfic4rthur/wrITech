@@ -20,6 +20,7 @@ export const UseAuthentication = () => {
       return;
     }
   }
+
   //register
   const createUser = async data => {
     checkIfIsCanceled();
@@ -29,14 +30,17 @@ export const UseAuthentication = () => {
 
     try {
       const { user } = await createUserWithEmailAndPassword(auth, data.email, data.password);
-      await updateProfile(user, { displayName: data.name });
+      await updateProfile(user, { displayName: data.displayName });
+
+      // Salvar displayName no Firestore
+      await db.collection('users').doc(user.uid).set({
+        displayName: data.displayName,
+      });
+
       setLoading(false);
       setSuccessMessage('Usuário cadastrado com sucesso!'); // Definir a mensagem de sucesso
       return user;
     } catch (error) {
-      console.log(error.message);
-      console.log(typeof error.message);
-
       let systemMessageError;
       if (error.message.includes('Password')) {
         systemMessageError = 'A senha precisa conter ao menos 6 caracteres!';
@@ -51,6 +55,7 @@ export const UseAuthentication = () => {
     }
     setLoading(false);
   };
+
   //logout
   const logout = () => {
     checkIfIsCanceled();
@@ -78,6 +83,7 @@ export const UseAuthentication = () => {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     return () => setCanceled(true);
   }, []);
