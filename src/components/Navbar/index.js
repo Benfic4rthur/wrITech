@@ -12,7 +12,7 @@ const index = () => {
   return (
     <nav className={styles.navbar}>
       <NavLink to='/' className={styles.brand}>
-        <img src={logo} alt='logo'/> 
+        <img src={logo} alt='logo' />
       </NavLink>
       <ul className={styles.links_list}>
         {!user && (
@@ -36,20 +36,20 @@ const index = () => {
                 Home
               </NavLink>
             </li>
-            <li title='dashboard'>
-              <NavLink
-                to='/dashboard'
-                className={({ isActive }) => (isActive ? styles.active : '')}
-              >
-                Dashboard
-              </NavLink>
-            </li>
             <li title='novo post'>
               <NavLink
                 to='/create-post'
                 className={({ isActive }) => (isActive ? styles.active : '')}
               >
                 Novo Post
+              </NavLink>
+            </li>
+            <li title='dashboard'>
+              <NavLink
+                to='/dashboard'
+                className={({ isActive }) => (isActive ? styles.active : '')}
+              >
+                Dashboard
               </NavLink>
             </li>
           </>
@@ -61,7 +61,7 @@ const index = () => {
         </li>
         {user && (
           <li title='Logout'>
-            <NavLink onClick={logout} className={({ isActive }) => styles.Lo} to='/'>
+            <NavLink onClick={logout} className={({ isActive }) => styles.Lo} to='/login'>
               <MdLogout />
             </NavLink>
           </li>

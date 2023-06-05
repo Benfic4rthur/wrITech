@@ -20,6 +20,7 @@ textarea::placeholder {
 input:focus,
 textarea:focus {
   outline: none;
+  background-color: transparent;
 }
 
 a,

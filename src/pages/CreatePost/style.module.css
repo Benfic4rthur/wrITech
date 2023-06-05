@@ -1,0 +1,33 @@
+.create_post {
+    align-items: center;
+    text-align: center;
+}
+
+.create_post h2 {
+    font-size: 2.2em;
+}
+
+.create_post button {
+    margin-top: 15px;
+}
+
+.boxpost {
+    width: 50%;
+    background-color: rgba(245, 245, 220, 0.273);
+    backdrop-filter: blur(13.5px);
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.176);
+    margin: 20px auto;
+    margin-bottom: 100px;
+}
+
+.boxpost label {
+    width: 500px;
+    margin-left: -75px;
+}
+
+.boxpost textarea {
+    height: 150px;
+    width: 500px;
+}
