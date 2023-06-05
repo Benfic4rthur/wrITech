@@ -22,8 +22,6 @@ const CreatePost = () => {
     e.preventDefault();
     setFormError('');
 
-    // Criar um array de tags
-
     // Verificar todos os valores
     const fileInput = document.getElementById('fileInput');
     const file = fileInput?.files[0];
@@ -67,8 +65,8 @@ const CreatePost = () => {
       createdBy: user.displayName,
     });
 
-  // Redirecionar para a página inicial após 2 segundos
-navigate('/');
+    // Redirecionar para a página inicial após 2 segundos
+    navigate('/');
   };
 
   return (
@@ -123,7 +121,6 @@ navigate('/');
               <progress value={progressPercent} min='0' max='100' />
             </>
           )}
-
           {(response.error || formError) && <p className='error'>{response.error || formError}</p>}
         </form>
       </div>
