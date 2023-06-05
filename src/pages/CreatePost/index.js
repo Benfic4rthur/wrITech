@@ -4,6 +4,7 @@ import { UseAuthValue } from '../../context/AuthContext';
 import { useInsertDocument } from '../../hooks/useInsertDocument';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase/config';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
@@ -15,15 +16,15 @@ const CreatePost = () => {
   const { user } = UseAuthValue();
 
   const { insertDocument, response } = useInsertDocument('posts');
+  const navigate = useNavigate();
 
   const handleSubmit = async e => {
     e.preventDefault();
     setFormError('');
 
-    // Validar a URL da imagem
     // Criar um array de tags
-    // Verificar todos os valores
 
+    // Verificar todos os valores
     const fileInput = document.getElementById('fileInput');
     const file = fileInput?.files[0];
 
@@ -54,6 +55,8 @@ const CreatePost = () => {
     }
   };
 
+  if (formError) return;
+
   const savePost = () => {
     insertDocument({
       title,
@@ -64,7 +67,8 @@ const CreatePost = () => {
       createdBy: user.displayName,
     });
 
-    // Redirecionar para a página inicial ou para onde desejar
+  // Redirecionar para a página inicial após 2 segundos
+navigate('/');
   };
 
   return (
@@ -108,13 +112,18 @@ const CreatePost = () => {
             <span>Imagem:</span>
             <input type='file' id='fileInput' onChange={e => setImgURL(e.target.value)} />
           </label>
-          {!response.loading && <button className='btn'>Postar</button>}
-          {response.loading && (
-            <button className='btn' disabled type='submit'>
-              Aguarde...
+          {progressPercent <= 1 ? (
+            <button className='btn' type='submit'>
+              Postar
             </button>
+          ) : (
+            <>
+              <div>Postando...</div>
+              <br />
+              <progress value={progressPercent} min='0' max='100' />
+            </>
           )}
-          {response.successMessage && <p className='success'>{response.successMessage}</p>}
+
           {(response.error || formError) && <p className='error'>{response.error || formError}</p>}
         </form>
       </div>
