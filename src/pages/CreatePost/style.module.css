@@ -31,3 +31,7 @@
     height: 150px;
     width: 500px;
 }
+progress{
+    background-color: #3b82f6;
+    border-radius: 10px
+}

@@ -11,7 +11,7 @@ const CreatePost = () => {
   const [imgURL, setImgURL] = useState('');
   const [progressPercent, setProgressPercent] = useState(0);
   const [body, setBody] = useState('');
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState('');
   const [formError, setFormError] = useState('');
   const { user } = UseAuthValue();
 
@@ -44,7 +44,7 @@ const CreatePost = () => {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
             setImgURL(downloadURL);
-            savePost();
+            savePost(downloadURL);
           });
         },
       );
@@ -53,21 +53,26 @@ const CreatePost = () => {
     }
   };
 
-  if (formError) return;
-
-  const savePost = () => {
-    insertDocument({
+  const savePost = downloadURL => {
+    const post = {
       title,
-      imgURL,
+      imgURL: downloadURL,
       body,
       tags: tags.split(',').map(tag => tag.trim()),
       uid: user.uid,
       createdBy: user.displayName,
-    });
+      imagePost: {
+        imageURL: downloadURL,
+      },
+    };
+
+    insertDocument(post);
 
     // Redirecionar para a página inicial após 2 segundos
     navigate('/');
   };
+
+  if (formError) return null;
 
   return (
     <div className={styles.create_post}>
@@ -108,7 +113,12 @@ const CreatePost = () => {
           </label>
           <label>
             <span>Imagem:</span>
-            <input type='file' id='fileInput' onChange={e => setImgURL(e.target.value)} />
+            <input
+              type='file'
+              id='fileInput'
+              accept='image/*'
+              onChange={e => setImgURL(e.target.files[0])}
+            />
           </label>
           {progressPercent <= 1 ? (
             <button className='btn' type='submit'>
@@ -116,9 +126,16 @@ const CreatePost = () => {
             </button>
           ) : (
             <>
-              <div>Postando...</div>
+              <button className='btn' disabled>
+                Postando...
+              </button>
               <br />
-              <progress value={progressPercent} min='0' max='100' />
+              <br />
+              <progress
+                value={progressPercent}
+                min='0'
+                max='100'
+              />
             </>
           )}
           {(response.error || formError) && <p className='error'>{response.error || formError}</p>}
