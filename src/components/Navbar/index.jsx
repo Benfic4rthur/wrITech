@@ -17,6 +17,11 @@ const index = () => {
       <ul className={styles.links_list}>
         {!user && (
           <>
+            <li title='catalog'>
+              <NavLink to='/catalog' className={({ isActive }) => (isActive ? styles.active : '')}>
+                Catalog
+              </NavLink>
+            </li>
             <li title='entrar'>
               <NavLink to='/login' className={({ isActive }) => (isActive ? styles.active : '')}>
                 Entrar
@@ -34,6 +39,11 @@ const index = () => {
             <li title='home'>
               <NavLink to='/' className={({ isActive }) => (isActive ? styles.active : '')}>
                 Home
+              </NavLink>
+            </li>
+            <li title='catalog'>
+              <NavLink to='/catalog' className={({ isActive }) => (isActive ? styles.active : '')}>
+                Catalog
               </NavLink>
             </li>
             <li title='novo post'>
@@ -61,7 +71,7 @@ const index = () => {
         </li>
         {user && (
           <li title='Logout'>
-            <NavLink onClick={logout} className={({ isActive }) => styles.Lo} to='/login'>
+            <NavLink onClick={logout} className={({ isActive }) => styles.Lo}>
               <MdLogout />
             </NavLink>
           </li>

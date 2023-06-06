@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useFetchDocuments } from '../../hooks/useFetchDocuments';
 
 //components
-import PostDetailsHome from '../../components/PostDetailsHome';
+import PostDetails from '../../components/PostDetails';
 
 const index = () => {
   const [query, setQuery] = useState('');
@@ -22,7 +22,7 @@ const index = () => {
   };
   return (
     <div className={styles.home}>
-      <h1>Veja todas as postagens mais recentes</h1>
+      <h1>Catalogo de postagens</h1>
       <form onSubmit={handleSubmit} className={styles.search_form}>
         <input
           type='text'
@@ -33,7 +33,7 @@ const index = () => {
       </form>
       <div>
         {loading && <p>Carregando...</p>}
-        {posts && posts.map(post => (<PostDetailsHome key={post.id} post={post}/>))}
+        {posts && posts.map(post => (<PostDetails key={post.id} post={post}/>))}
         {posts && posts.length === 0 && (
           <div className={styles.noposts}>
             <p>Não existem postagens!</p>
