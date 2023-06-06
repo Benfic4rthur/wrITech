@@ -98,3 +98,56 @@ export const UseAuthentication = () => {
     login,
   };
 };
+
+export const logout = () => {
+  const auth = getAuth();
+  signOut(auth);
+};
+
+export async function login({ email = '', password = '' }) {
+  const auth = getAuth();
+  let systemMessageError = '';
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    return { error: systemMessageError, success: true };
+  } catch (error) {
+    if (error.message.includes('auth/wrong-password')) {
+      systemMessageError = 'Senha incorreta!';
+    } else if (error.message.includes('auth/user-not-found')) {
+      systemMessageError = 'Usuário não cadastrado!';
+    } else {
+      systemMessageError = 'Ocorreu um erro ao logar, por favor tente novamente mais tarde!';
+    }
+    return { error: systemMessageError, success: false };
+  }
+}
+
+export async function createUser({ email = '', password = '', displayName = '' }) {
+  const auth = getAuth();
+  let systemMessageError = '';
+
+  try {
+    const { user } = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(user, { displayName: displayName });
+
+    // Salvar displayName no Firestore
+    await db.collection('users').doc(user.uid).set({
+      displayName: displayName,
+    });
+
+    return { error: systemMessageError, success: true, user };
+  } catch (error) {
+    let systemMessageError;
+    if (error.message.includes('Password')) {
+      systemMessageError = 'A senha precisa conter ao menos 6 caracteres!';
+    } else if (error.message.includes('auth/email-already-in-use')) {
+      systemMessageError = 'E-mail já cadastrado!';
+    } else {
+      systemMessageError =
+        'Ocorreu um erro ao criar o usuário, por favor tente novamente mais tarde!';
+    }
+    return { error: systemMessageError, success: false };
+  }
+}
+
