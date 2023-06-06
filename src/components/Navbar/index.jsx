@@ -14,6 +14,10 @@ const index = () => {
       <NavLink to='/' className={styles.brand}>
         <img src={logo} alt='logo' />
       </NavLink>
+      {user && (
+              <p>Logado como: {user.displayName}</p>
+      )}
+
       <ul className={styles.links_list}>
         {!user && (
           <>
@@ -62,6 +66,7 @@ const index = () => {
                 Dashboard
               </NavLink>
             </li>
+
           </>
         )}
         <li title='sobre'>

@@ -1,13 +1,13 @@
 // CSS
-import styles from "./style.module.css";
+import styles from './style.module.css';
 
 // hooks
-import { useFetchDocument } from "../../hooks/useFetchDocument";
-import { useParams } from "react-router-dom";
+import { useFetchDocument } from '../../hooks/useFetchDocument';
+import { useParams } from 'react-router-dom';
 
 const Post = () => {
   const { id } = useParams();
-  const { document: post } = useFetchDocument("posts", id);
+  const { document: post } = useFetchDocument('posts', id);
 
   return (
     <div className={styles.post_container}>
@@ -18,13 +18,14 @@ const Post = () => {
           <p className={`${styles.body} ${styles.paragraph}`}>{post.body}</p>
           <h3>tags da postagem:</h3>
           <div className={styles.tags}>
-            {post.tags.map((tag) => (
+            {post.tags.map(tag => (
               <p key={tag}>
                 <span>#</span>
                 {tag}
               </p>
             ))}
           </div>
+          <p className={styles.createdby}>{post.createdBy}</p>
         </>
       )}
     </div>

@@ -1,11 +1,12 @@
-.register{
+.register {
     text-align: center;
 }
-.register p{
+
+.register p {
     color: BLACK;
 }
 
-.container{
+.container {
     height: 100%;
     width: 100%;
     display: flex;
@@ -13,7 +14,7 @@
     align-items: center;
 }
 
-.register{
+.register {
     background-color: rgba(245, 245, 220, 0.273);
     backdrop-filter: blur( 13.5px );
     padding: 10px;
@@ -21,16 +22,19 @@
     border-radius: 25px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.176);
     width: min(100%, 400px);
+    margin-top: 50px;
 }
 
-.register form{
-  min-width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  }
-  
-.register input, textarea, label{
-  width: min(100%, 300px)
-  }
+.register form {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register input,
+textarea,
+label {
+    width: min(100%, 300px)
+}

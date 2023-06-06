@@ -1,9 +1,11 @@
 import styles from './index.module.css';
 import { useState, useEffect } from 'react';
 import { UseAuthentication } from '../../hooks/useAuthentication';
+import InputMask from 'react-input-mask';
 const Index = () => {
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
@@ -13,11 +15,17 @@ const Index = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     setError('');
+
+    // Remover caracteres não numéricos do número de telefone
+    const cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
+
     const user = {
       displayName,
       email,
+      phoneNumber: cleanedPhoneNumber,
       password,
     };
+
     if (password !== confirmPassword) {
       setError('As senhas não são iguais');
       return;
@@ -30,6 +38,7 @@ const Index = () => {
       setError(authError);
     }
   }, [authError]);
+
   return (
     <div className={styles.container}>
       <div className={styles.register}>
@@ -55,6 +64,18 @@ const Index = () => {
               placeholder='E-mail do usuário'
               value={email}
               onChange={e => setEmail(e.target.value)}
+            />
+          </label>
+          <label>
+            <span>Celular:</span>
+            <InputMask
+              mask='(99) 99999-9999'
+              maskPlaceholder={null}
+              name='celular'
+              required
+              placeholder='Celular do usuário'
+              value={phoneNumber}
+              onChange={e => setPhoneNumber(e.target.value)}
             />
           </label>
           <label>

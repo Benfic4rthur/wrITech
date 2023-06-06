@@ -29,12 +29,13 @@ export const UseAuthentication = () => {
     setSuccessMessage(null); // Limpar a mensagem de sucesso antes de criar um novo usuário
 
     try {
-      const { user } = await createUserWithEmailAndPassword(auth, data.email, data.password);
-      await updateProfile(user, { displayName: data.displayName });
+      const { user } = await createUserWithEmailAndPassword(auth, data.email, data.password); // Criar usuário
+      await updateProfile(user, { displayName: data.displayName, phoneNumber: data.phoneNumber }); // Atualizar informações
 
-      // Salvar displayName no Firestore
+      // Salvar displayName e phoneNumber no Firestore
       await db.collection('users').doc(user.uid).set({
         displayName: data.displayName,
+        phoneNumber: data.phoneNumber,
       });
 
       setLoading(false);
