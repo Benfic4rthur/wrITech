@@ -85,7 +85,7 @@ textarea {
 }
 .btn.btn-dark{
   background-color: #000;
-  border-radius: 0;
+  border-radius: 5px;
 }
 .btn.btn-outline{
   background-color: transparent;
@@ -95,10 +95,10 @@ textarea {
   padding: 7px 30px;
 }
 .btn:hover{
-  background-color: #307ea4;
+  background-color: #02121b;
   color: #fff;
   transition: .5s;
-  border-radius: 25px;
+  border-radius: 10px
 }
 .btn.btn-outline:hover{
   background-color: #000;
