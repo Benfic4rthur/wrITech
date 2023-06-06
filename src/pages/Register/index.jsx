@@ -1,72 +1,35 @@
+import { useEffect, useState } from 'react';
+import { Form, Link, useActionData, useLoaderData } from 'react-router-dom';
+import { createUser } from '../../hooks/useAuthentication';
 import styles from './index.module.css';
-import { useState, useEffect } from 'react';
-import { UseAuthentication } from '../../hooks/useAuthentication';
-const Index = () => {
-  const [displayName, setDisplayName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+
+export default function Index() {
+  const data = useActionData();
+  const loading = useLoaderData();
+
   const [error, setError] = useState('');
 
-  const { createUser, error: authError, loading, successMessage } = UseAuthentication();
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-    setError('');
-    const user = {
-      displayName,
-      email,
-      password,
-    };
-    if (password !== confirmPassword) {
-      setError('As senhas não são iguais');
-      return;
-    }
-    const res = await createUser(user);
-    console.log(user);
-  };
   useEffect(() => {
-    if (authError) {
-      setError(authError);
-    }
-  }, [authError]);
+    console.log(data);
+    setError(data?.error);
+  }, [loading]);
+
   return (
     <div className={styles.container}>
       <div className={styles.register}>
         <h1>Cadastre-se</h1>
-        <form onSubmit={handleSubmit}>
+        <Form method='POST' action='/register'>
           <label>
             <span>Nome:</span>
-            <input
-              type='text'
-              name='displayName'
-              required
-              placeholder='Nome do usuário'
-              value={displayName}
-              onChange={e => setDisplayName(e.target.value)}
-            />
+            <input type='text' name='displayName' required placeholder='Nome do usuário' />
           </label>
           <label>
             <span>E-mail:</span>
-            <input
-              type='email'
-              name='email'
-              required
-              placeholder='E-mail do usuário'
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-            />
+            <input type='email' name='email' required placeholder='E-mail do usuário' />
           </label>
           <label>
             <span>Senha:</span>
-            <input
-              type='password'
-              name='password'
-              required
-              placeholder='Senha do usuário'
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
+            <input type='password' name='password' required placeholder='Senha do usuário' />
           </label>
           <label>
             <span>Confirmação senha:</span>
@@ -75,22 +38,50 @@ const Index = () => {
               name='confirmPassword'
               required
               placeholder='Confirmação da senha'
-              value={confirmPassword}
-              onChange={e => setConfirmPassword(e.target.value)}
             />
           </label>
-          {!loading && <button className='btn'>Cadastrar</button>}
-          {loading && (
-            <button className='btn' disabled>
-              Aguarde...
-            </button>
-          )}
-          {successMessage && <p className='success'>{successMessage}</p>}
+          <Link to={'/login'} about='link para a pagina de login'>
+            Fazer login
+          </Link>
+
+          <button className='btn' disabled={loading}>
+            {!loading ? 'Cadastrar' : 'Aguarde...'}
+          </button>
+
           {error && <p className='error'>{error}</p>}
-        </form>
+        </Form>
       </div>
     </div>
   );
-};
+}
 
-export default Index;
+export async function actionRegister({ request }) {
+  const data = await request.formData();
+
+  console.log({ data });
+
+  const displayName = await data.get('displayName');
+
+  const email = await data.get('email');
+
+  const password = await data.get('password');
+
+  const confirmPassword = await data.get('confirmPassword');
+
+  console.log({ displayName, email, password, confirmPassword });
+
+  //   const { createUser, error: authError, success } = UseAuthentication();
+
+  if (password !== confirmPassword) {
+    return {
+      error: 'As senhas não são iguais',
+      success: false,
+    };
+  }
+
+  const res = await createUser({ displayName, email, password });
+
+  console.log(res);
+
+  return res;
+}
