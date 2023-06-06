@@ -10,6 +10,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import CreatePost from './pages/CreatePost';
+import Search from './pages/Search';
+import Post from './pages/Post';
+import Catalog from './pages/Catalog';
 //components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -42,8 +45,11 @@ function App() {
             <div className='container'>
               <Routes>
                 <Route path='/' element={<Home />} />
+                <Route path='/catalog' element={<Catalog />} />
                 <Route path='/about' element={<About />} />
-                <Route path='/login' element={!user ? <Login /> : <Navigate to='/dashboard' />} />
+                <Route path='/search' element={<Search />} />
+                <Route path='/posts/:id' element={<Post />} />
+                <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
                 <Route path='/register' element={!user ? <Register /> : <Navigate to='/dashboard' />} />
                 <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/login' />} />
                 <Route path='/create-post' element={user ? <CreatePost /> : <Navigate to='/login' />} />

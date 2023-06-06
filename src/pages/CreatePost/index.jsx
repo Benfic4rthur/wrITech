@@ -121,7 +121,7 @@ const CreatePost = () => {
             />
           </label>
           {progressPercent <= 1 ? (
-            <button className='btn' type='submit'>
+            <button className='btn btn-dark' type='submit'>
               Postar
             </button>
           ) : (

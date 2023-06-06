@@ -1,0 +1,59 @@
+.postContainer {
+    display: inline-block;
+    margin: 10px;
+  }
+  
+  .postLink {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .postBox {
+    width: 200px;
+    height: 225px;
+    overflow: hidden;
+    border: 4px solid #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    text-align: center;
+    transition: .3s;
+  }
+  .postBox:hover{
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+    transition: .3s;
+    border-radius: 20px;
+  }
+  
+  .postBox img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .postBox h2{
+margin-top: -2px;
+  }
+  
+  .title {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .createdBy {
+    margin-top: 10px;
+  }
+  
+  .tags {
+    margin-top: 10px;
+  }
+  
+  .tags p {
+    display: inline-block;
+    margin: 0 5px 0 0;
+  }
+  
+  .readLink {
+    display: block;
+    margin-top: 10px;
+  }
+  

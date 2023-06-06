@@ -7,6 +7,7 @@
     background: #b6bdc2;
     color: black;
     background: rgba(255, 255, 255, 0.8);
+    margin-top: 50px;
 }
 .footer p{
     display: flex;
