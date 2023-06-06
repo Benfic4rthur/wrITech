@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './style.module.css';
-import { UseAuthentication } from '../../hooks/useAuthentication';
+import { logout } from '../../hooks/useAuthentication';
 import { UseAuthValue } from '../../context/AuthContext';
 // importa botão de logout do material design
 import { MdLogout } from 'react-icons/md';
@@ -8,7 +8,6 @@ import logo from '../../assets/writech.png';
 
 const index = () => {
   const { user } = UseAuthValue();
-  const { logout } = UseAuthentication();
   return (
     <nav className={styles.navbar}>
       <NavLink to='/' className={styles.brand}>
@@ -61,7 +60,7 @@ const index = () => {
         </li>
         {user && (
           <li title='Logout'>
-            <NavLink onClick={logout} className={({ isActive }) => styles.Lo} to='/login'>
+            <NavLink onClick={logout} className={() => styles.Lo} to='/login'>
               <MdLogout />
             </NavLink>
           </li>
