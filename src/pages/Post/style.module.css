@@ -12,6 +12,7 @@
 }
   .post_container h3 {
     margin-bottom: 0.2em;
+    margin-top: 3em;
   }
   
   .body{
@@ -31,3 +32,11 @@
   .tags span {
     font-weight: bold;
   }
+  .paragraph {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    text-align: justify;
+    white-space: pre-line;
+  }
+  
+  

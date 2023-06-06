@@ -15,7 +15,7 @@ const Post = () => {
         <>
           <h1>{post.title}</h1>
           <img src={post.imgURL} alt={post.title} />
-          <p className={styles.body}>{post.body}</p>
+          <p className={`${styles.body} ${styles.paragraph}`}>{post.body}</p>
           <h3>tags da postagem:</h3>
           <div className={styles.tags}>
             {post.tags.map((tag) => (

@@ -18,6 +18,7 @@ const index = ({ post }) => {
         ))}
       </div>
       <Link to={`/posts/${post.id}`}className='btn btn-outline'>Ler</Link>
+      <hr></hr>
     </div>
   );
 };
