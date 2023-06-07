@@ -1,24 +1,24 @@
 import { useEffect, useState } from 'react';
-import { Form, Link, useActionData, useLoaderData } from 'react-router-dom';
+import { Link, useFetcher } from 'react-router-dom';
 import { createUser } from '../../hooks/useAuthentication';
 import styles from './index.module.css';
 
 export default function Index() {
-  const data = useActionData();
-  const loading = useLoaderData();
-
-  const [error, setError] = useState('');
+  const fetcher = useFetcher();
+  const { state, data } = fetcher;
+  const [Loading, setLoading] = useState(state == 'idle');
+  const [Error, setError] = useState('');
 
   useEffect(() => {
-    console.log(data);
+    setLoading(state == 'idle');
     setError(data?.error);
-  }, [loading]);
+  }, [state]);
 
   return (
     <div className={styles.container}>
       <div className={styles.register}>
         <h1>Cadastre-se</h1>
-        <Form method='POST' action='/register'>
+        <fetcher.Form method='POST' action='/register'>
           <label>
             <span>Nome:</span>
             <input type='text' name='displayName' required placeholder='Nome do usuário' />
@@ -44,12 +44,12 @@ export default function Index() {
             Fazer login
           </Link>
 
-          <button className='btn' disabled={loading}>
-            {!loading ? 'Cadastrar' : 'Aguarde...'}
+          <button className='btn' disabled={!Loading}>
+            {Loading ? 'Cadastrar' : 'Aguarde...'}
           </button>
 
-          {error && <p className='error'>{error}</p>}
-        </Form>
+          {Error && <p className='error'>{Error}</p>}
+        </fetcher.Form>
       </div>
     </div>
   );

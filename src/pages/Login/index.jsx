@@ -1,29 +1,24 @@
 import { useEffect, useState } from 'react';
-import { Form, Link, useActionData, useLoaderData } from 'react-router-dom';
+import { Link, useFetcher } from 'react-router-dom';
 import { login } from '../../hooks/useAuthentication';
 import styles from './index.module.css';
 
 export function Login() {
-  const data = useActionData();
-  const loading = useLoaderData();
-
-  const [error, setError] = useState('');
+  const fetcher = useFetcher();
+  const { state, data } = fetcher;
+  const [Loading, setLoading] = useState(state == 'idle');
+  const [Error, setError] = useState('');
 
   useEffect(() => {
-    console.log(loading);
+    setLoading(state == 'idle');
     setError(data?.error);
-  }, [loading]);
-
-  useEffect(() => {
-    console.log(error);
-  }, [error]);
+  }, [state]);
 
   return (
     <div className={styles.container}>
       <div className={styles.login}>
         <h1>Entrar</h1>
-        {/* <form onSubmit={handleSubmit}> */}
-        <Form method='POST' action='/login'>
+        <fetcher.Form method='POST' action='/login'>
           <label>
             <span>E-mail:</span>
             <input type='email' name='email' required placeholder='E-mail do usuário' />
@@ -37,12 +32,12 @@ export function Login() {
             Criar conta
           </Link>
 
-          <button className='btn' disabled={loading}>
-            {!loading ? 'Entrar' : 'Aguarde...'}
+          <button className='btn' disabled={!Loading}>
+            {Loading ? 'Entrar' : 'Aguarde...'}
           </button>
 
-          {error && <p className='error'>{error}</p>}
-        </Form>
+          {Error && <p className='error'>{Error}</p>}
+        </fetcher.Form>
       </div>
     </div>
   );
