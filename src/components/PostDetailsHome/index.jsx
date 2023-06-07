@@ -1,23 +1,25 @@
-import styles from './style.module.css';
 import { Link } from 'react-router-dom';
+import styles from './style.module.css';
 
 const index = ({ post }) => {
-  const limitaTituloPostagem = 40;
-  const title = post.title.length > limitaTituloPostagem ? `${post.title.substring(0, limitaTituloPostagem)}...` : post.title;
+  const { title, createdBy, tags, imgURL, id } = post;
+
   return (
     <div className={styles.post_detail}>
-      <img src={post.imgURL} alt={post.title} />
-      <h2 className={styles.title}>{title}</h2>
-      <p className={styles.createdby}>{post.createdBy}</p>
+      <img src={imgURL} alt={title} />
+      <h2 >{title}</h2>
+      <p className={styles.createdby}>{createdBy}</p>
       <div className={styles.tags}>
-        {post.tags.map(tag => (
+        {tags.map(tag => (
           <p key={tag}>
             <span>#</span>
             {tag}
           </p>
         ))}
       </div>
-      <Link to={`/posts/${post.id}`}className='btn btn-outline'>Ler</Link>
+      <Link to={`/posts/${id}`} className='btn btn-outline'>
+        Ler
+      </Link>
       <hr></hr>
     </div>
   );

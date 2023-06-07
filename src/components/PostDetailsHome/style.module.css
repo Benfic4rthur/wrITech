@@ -1,29 +1,38 @@
-.post_detail{
-    margin-bottom: 2em;
+.post_detail {
+  margin-bottom: 2em;
 }
-.post_detail img{
-    width: 300px;
-    transition: .7s;
+img {
+  display: block;
+  width: 300px;
+  max-width: 300px;
+  transition: 0.7s;
 }
-.post_detail h2{
-    margin-bottom: 0.4em;
+h2 {
+  display: block;
+  margin-bottom: 0.4em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 300px;
+  width: 100%;
 }
-.post_detail .tags{
-    margin-bottom: 1.2em;
-    display: flex;
+.post_detail .tags {
+  margin-bottom: 1.2em;
+  display: flex;
 }
-.tags p{
-    margin-right: .5em;
+
+.tags p {
+  margin-right: 0.5em;
 }
-.tags span{
-    font-weight: bold;
+.tags span {
+  font-weight: bold;
 }
-.createdby{
-    font-style: italic;
-    color:#444;
-    font-size: .8em;
-    margin-bottom: 1em;
+.createdby {
+  font-style: italic;
+  color: #444;
+  font-size: 0.8em;
+  margin-bottom: 1em;
 }
-.post_detail hr{
-    margin-top: 2em;
+.post_detail hr {
+  margin-top: 2em;
 }

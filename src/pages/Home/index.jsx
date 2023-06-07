@@ -20,6 +20,7 @@ const index = () => {
       return navigate(`/search?q=${query}`);
     }
   };
+  
   return (
     <div className={styles.home}>
       <h1>Veja todas as postagens mais recentes</h1>
