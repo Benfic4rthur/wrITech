@@ -5,6 +5,8 @@
 
 .create_post h2 {
     font-size: 2.2em;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
 .create_post button {

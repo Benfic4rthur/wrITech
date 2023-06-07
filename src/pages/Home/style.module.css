@@ -20,6 +20,7 @@
 
 .noposts {
     text-align: center;
+    height: 45vh;
 }
 .noposts p{
     margin-bottom: 1.5em;

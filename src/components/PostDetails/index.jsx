@@ -11,7 +11,7 @@ const Index = ({ post }) => {
     <div className={styles.postContainer}>
       <Link to={`/posts/${post.id}`} className={styles.postLink}>
         <div className={styles.postBox}>
-          <img src={post.imgURL} alt={title} title={body} />
+          <img src={post.mediaURL} alt={title} title={body} />
           <h2 className={styles.title}>{title}</h2>
         </div>
       </Link>

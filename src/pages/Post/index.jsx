@@ -14,7 +14,7 @@ const Post = () => {
       {post && (
         <>
           <h1>{post.title}</h1>
-          <img src={post.imgURL} alt={post.title} />
+          <video src={post.mediaURL} alt={post.title} controls/>
           <p className={`${styles.body} ${styles.paragraph}`}>{post.body}</p>
           <h3>tags da postagem:</h3>
           <div className={styles.tags}>

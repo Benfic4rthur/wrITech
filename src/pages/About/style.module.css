@@ -1,41 +1,54 @@
-.about{
+.about {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 65vh;
 }
-.about p{
+
+.about p {
     color: white;
 }
-.about span{
+
+.about span {
     color: white;
 }
-.about img{
+
+.about img {
     border-radius: 300px;
     width: 100px;
     height: 95px;
     transform: rotateY(0deg);
     transition: all 0.7s;
     filter: drop-shadow(1px 2px 10px rgb(80, 73, 84));
+    margin: 0 auto;
 }
-.about img:hover{
+
+.about img:hover {
     filter: drop-shadow(1px 2px 10px white);
     transform: rotateY(360deg);
     transition: all 0.7s;
     width: 100px;
     height: 95px;
+    cursor: pointer;
 }
-.boxperson{
+
+.boxperson {
     background-color: rgba(245, 245, 220, 0.273);
-    backdrop-filter: blur( 13.5px );
+    backdrop-filter: blur(13.5px);
     padding: 10px;
     border-radius: 25px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.176);
 }
 
-.bio p{
+.bio p {
     color: black;
     width: 400px;
     font-size: .9em;
     margin-top: -10px;
+    text-align: justify;
+}
+
+.boxperson h2 {
+    margin: 0 auto;
 }

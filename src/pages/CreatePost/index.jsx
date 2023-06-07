@@ -1,5 +1,5 @@
+import React, { useState } from 'react';
 import styles from './style.module.css';
-import { useState } from 'react';
 import { UseAuthValue } from '../../context/AuthContext';
 import { useInsertDocument } from '../../hooks/useInsertDocument';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
-  const [imgURL, setImgURL] = useState('');
+  const [mediaURL, setMediaURL] = useState('');
   const [progressPercent, setProgressPercent] = useState(0);
   const [body, setBody] = useState('');
   const [tags, setTags] = useState('');
@@ -18,57 +18,55 @@ const CreatePost = () => {
   const { insertDocument, response } = useInsertDocument('posts');
   const navigate = useNavigate();
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormError('');
 
-    // Verificar todos os valores
-    const fileInput = document.getElementById('fileInput');
-    const file = fileInput?.files[0];
+    const mediaFileInput = document.getElementById('mediaFileInput');
+    const mediaFile = mediaFileInput?.files[0];
 
-    if (!file) return;
+    if (!mediaFile) {
+      setFormError('Selecione uma imagem ou vídeo.');
+      return;
+    }
 
     try {
-      const storageRef = ref(storage, `posts/${file.name}`);
-      const uploadTask = uploadBytesResumable(storageRef, file);
+      const mediaStorageRef = ref(storage, `posts/${mediaFile.name}`);
+      const mediaUploadTask = uploadBytesResumable(mediaStorageRef, mediaFile);
 
-      uploadTask.on(
+      mediaUploadTask.on(
         'state_changed',
-        snapshot => {
+        (snapshot) => {
           const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
           setProgressPercent(progress);
         },
-        error => {
+        (error) => {
           console.error(error);
         },
         () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-            setImgURL(downloadURL);
+          getDownloadURL(mediaUploadTask.snapshot.ref).then((downloadURL) => {
+            setMediaURL(downloadURL);
             savePost(downloadURL);
           });
-        },
+        }
       );
     } catch (error) {
       console.error(error);
     }
   };
 
-  const savePost = downloadURL => {
+  const savePost = (mediaURL) => {
     const post = {
       title,
-      imgURL: downloadURL,
+      mediaURL,
       body,
-      tags: tags.split(',').map(tag => tag.trim()),
+      tags: tags.split(',').map((tag) => tag.trim()),
       uid: user.uid,
       createdBy: user.displayName,
-      imagePost: {
-        imageURL: downloadURL,
-      },
     };
 
     insertDocument(post);
 
-    // Redirecionar para a página inicial após 2 segundos
     navigate('/');
   };
 
@@ -82,63 +80,62 @@ const CreatePost = () => {
           <label>
             <span>Título:</span>
             <input
-              type='text'
-              name='title'
+              type="text"
+              name="title"
               value={title}
-              onChange={e => setTitle(e.target.value)}
-              placeholder='Pense em um título de fácil entendimento...'
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Pense em um título de fácil entendimento..."
               required
             />
           </label>
           <label>
             <span>Conteúdo:</span>
             <textarea
-              name='body'
+              name="body"
               value={body}
-              onChange={e => setBody(e.target.value)}
-              placeholder='Compartilhe suas ideias e seu conhecimento aqui...'
+              onChange={(e) => setBody(e.target.value)}
+              placeholder="Compartilhe suas ideias e seu conhecimento aqui..."
               required
             />
           </label>
           <label>
             <span>Tags:</span>
             <input
-              type='text'
-              name='tags'
+              type="text"
+              name="tags"
               value={tags}
-              onChange={e => setTags(e.target.value)}
-              placeholder='Insira suas tags separadas por vírgula...'
+              onChange={(e) => setTags(e.target.value)}
+              placeholder="Insira suas tags separadas por vírgula..."
               required
             />
           </label>
           <label>
-            <span>Imagem:</span>
+            <span>Mídia (Imagem ou Vídeo):</span>
             <input
-              type='file'
-              id='fileInput'
-              accept='image/*'
-              onChange={e => setImgURL(e.target.files[0])}
+              type="file"
+              id="mediaFileInput"
+              accept="image/*, video/*"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                // setMediaURL(file); // Remova esta linha
+              }}
             />
           </label>
           {progressPercent <= 1 ? (
-            <button className='btn btn-dark' type='submit'>
+            <button className="btn btn-dark" type="submit">
               Postar
             </button>
           ) : (
             <>
-              <button className='btn' disabled>
+              <button className="btn" disabled>
                 Postando...
               </button>
               <br />
               <br />
-              <progress
-                value={progressPercent}
-                min='0'
-                max='100'
-              />
+              <progress value={progressPercent} min="0" max="100" />
             </>
           )}
-          {(response.error || formError) && <p className='error'>{response.error || formError}</p>}
+          {(response.error || formError) && <p className="error">{response.error || formError}</p>}
         </form>
       </div>
     </div>
