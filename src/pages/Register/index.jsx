@@ -1,16 +1,21 @@
 import styles from './index.module.css';
 import { useState, useEffect } from 'react';
 import { UseAuthentication } from '../../hooks/useAuthentication';
+import { useInsertUserInfo } from '../../hooks/userNameANDphoneNumber';
 import InputMask from 'react-input-mask';
+
 const Index = () => {
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [userName, setUserName] = useState('');
+  const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
   const { createUser, error: authError, loading, successMessage } = UseAuthentication();
+  const { insertUserInfo } = useInsertUserInfo('userInfo');
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -18,21 +23,29 @@ const Index = () => {
 
     // Remover caracteres não numéricos do número de telefone
     const cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
+    const userIdMail = email;
 
     const user = {
       displayName,
       email,
       phoneNumber: cleanedPhoneNumber,
+      userId: userIdMail,
+      userName,
       password,
     };
 
     if (password !== confirmPassword) {
-      setError('As senhas não são iguais');
+      setError('As senhas não são iguais');
       return;
     }
+
     const res = await createUser(user);
-    console.log(user);
+
+    if (!loading && !authError) {
+      insertUserInfo(cleanedPhoneNumber, userName, userIdMail);
+    }
   };
+
   useEffect(() => {
     if (authError) {
       setError(authError);
@@ -50,9 +63,20 @@ const Index = () => {
               type='text'
               name='displayName'
               required
-              placeholder='Nome do usuário'
+              placeholder='Nome completo'
               value={displayName}
               onChange={e => setDisplayName(e.target.value)}
+            />
+          </label>
+          <label>
+            <span>Usuário:</span>
+            <input
+              type='text'
+              name='userName'
+              required
+              placeholder='Nome de usuário'
+              value={userName}
+              onChange={e => setUserName(e.target.value)}
             />
           </label>
           <label>

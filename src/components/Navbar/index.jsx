@@ -2,27 +2,31 @@ import { NavLink } from 'react-router-dom';
 import styles from './style.module.css';
 import { UseAuthentication } from '../../hooks/useAuthentication';
 import { UseAuthValue } from '../../context/AuthContext';
-// importa botão de logout do material design
 import { MdLogout } from 'react-icons/md';
 import logo from '../../assets/writech.png';
+import { useUserInfo } from '../../hooks/userName';
 
 const index = () => {
   const { user } = UseAuthValue();
   const { logout } = UseAuthentication();
+  const userEmail = user ? user.email : '';
+  const userName = useUserInfo(userEmail);
+
   return (
     <nav className={styles.navbar}>
       <NavLink to='/' className={styles.brand}>
         <img src={logo} alt='logo' />
       </NavLink>
-      {user && (
-              <p>Logado como: {user.displayName}</p>
-      )}
+      {user && <p>Logado como: {userName}</p>}
 
       <ul className={styles.links_list}>
         {!user && (
           <>
             <li title='catalog'>
-              <NavLink to='/catalog' className={({ isActive }) => (isActive ? styles.active : '')}>
+              <NavLink
+                to='/catalog'
+                className={({ isActive }) => (isActive ? styles.active : '')}
+              >
                 Catalog
               </NavLink>
             </li>
@@ -32,7 +36,10 @@ const index = () => {
               </NavLink>
             </li>
             <li title='cadastrar'>
-              <NavLink to='/register' className={({ isActive }) => (isActive ? styles.active : '')}>
+              <NavLink
+                to='/register'
+                className={({ isActive }) => (isActive ? styles.active : '')}
+              >
                 Cadastro
               </NavLink>
             </li>
@@ -46,7 +53,10 @@ const index = () => {
               </NavLink>
             </li>
             <li title='catalog'>
-              <NavLink to='/catalog' className={({ isActive }) => (isActive ? styles.active : '')}>
+              <NavLink
+                to='/catalog'
+                className={({ isActive }) => (isActive ? styles.active : '')}
+              >
                 Catalog
               </NavLink>
             </li>
@@ -66,7 +76,6 @@ const index = () => {
                 Dashboard
               </NavLink>
             </li>
-
           </>
         )}
         <li title='sobre'>
