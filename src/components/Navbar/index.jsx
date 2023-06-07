@@ -13,20 +13,17 @@ const index = () => {
   const userName = useUserInfo(userEmail);
 
   return (
+    <>
     <nav className={styles.navbar}>
       <NavLink to='/' className={styles.brand}>
         <img src={logo} alt='logo' />
       </NavLink>
-      {user && <p>Logado como: {userName}</p>}
 
       <ul className={styles.links_list}>
         {!user && (
           <>
             <li title='catalog'>
-              <NavLink
-                to='/catalog'
-                className={({ isActive }) => (isActive ? styles.active : '')}
-              >
+              <NavLink to='/catalog' className={({ isActive }) => (isActive ? styles.active : '')}>
                 Catalog
               </NavLink>
             </li>
@@ -36,10 +33,7 @@ const index = () => {
               </NavLink>
             </li>
             <li title='cadastrar'>
-              <NavLink
-                to='/register'
-                className={({ isActive }) => (isActive ? styles.active : '')}
-              >
+              <NavLink to='/register' className={({ isActive }) => (isActive ? styles.active : '')}>
                 Cadastro
               </NavLink>
             </li>
@@ -53,10 +47,7 @@ const index = () => {
               </NavLink>
             </li>
             <li title='catalog'>
-              <NavLink
-                to='/catalog'
-                className={({ isActive }) => (isActive ? styles.active : '')}
-              >
+              <NavLink to='/catalog' className={({ isActive }) => (isActive ? styles.active : '')}>
                 Catalog
               </NavLink>
             </li>
@@ -92,6 +83,7 @@ const index = () => {
         )}
       </ul>
     </nav>
+          <div className={styles.nomeUsuario}>{user && <span>/{userName}</span>}</div></>
   );
 };
 

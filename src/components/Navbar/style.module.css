@@ -6,7 +6,6 @@
     padding: .5em 2em;
     background-color: transparent;
 }
-
 .brand img{
     width: 140px;
 }
@@ -42,4 +41,13 @@
     display: flex;
     margin-top: -4px;
     justify-content: center;
+}
+.nomeUsuario{
+    margin-top: -3.2em;
+    text-align: right;
+    width: 243px;
+}
+.nomeUsuario span{
+    color: rgb(33, 33, 33);
+    font-weight: bold;
 }
