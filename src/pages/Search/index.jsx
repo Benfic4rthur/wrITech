@@ -13,7 +13,7 @@ const index = () => {
   const { documents: posts } = useFetchDocuments("posts", search);
   return (
     <div className={styles.search_container}>
-      <h1>Resultados encontrados para: #{search}</h1>
+      <h1>Resultados encontrados para: {search}</h1>
       <div className="post-list">
         {posts && posts.length === 0 && (
           <div className={styles.noposts}>
