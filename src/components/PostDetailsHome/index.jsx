@@ -6,8 +6,13 @@ const index = ({ post }) => {
 
   return (
     <div className={styles.post_detail}>
-      <img src={mediaURL} alt={title} />
-      <h2 >{title}</h2>
+      {mediaURL && (mediaURL.includes('.mp4') || mediaURL.includes('.webm')) ? (
+        <video src={mediaURL} alt={title}/>
+      ) : (
+        <img src={mediaURL} alt={title} />
+      )}
+
+      <h2>{title}</h2>
       <p className={styles.createdby}>{createdBy}</p>
       <div className={styles.tags}>
         {tags.map(tag => (
