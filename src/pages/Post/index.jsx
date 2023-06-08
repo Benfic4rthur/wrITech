@@ -14,7 +14,11 @@ const Post = () => {
       {post && (
         <>
           <h1>{post.title}</h1>
-          <video src={post.mediaURL} alt={post.title} controls/>
+          {post.mediaURL && (post.mediaURL.includes('.mp4') || post.mediaURL.includes('.webm')) ? (
+            <video src={post.mediaURL} alt={post.title} controls />
+          ) : (
+            <img src={post.mediaURL} alt={post.title} />
+          )}
           <p className={`${styles.body} ${styles.paragraph}`}>{post.body}</p>
           <h3>tags da postagem:</h3>
           <div className={styles.tags}>
