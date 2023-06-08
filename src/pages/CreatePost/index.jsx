@@ -95,7 +95,7 @@ const CreatePost = () => {
         />
 
         <Textaria
-          aria-label='Conteúdo'
+          aria-label='Descrição'
           name='body'
           value={body}
           onChange={e => setBody(e.target.value)}

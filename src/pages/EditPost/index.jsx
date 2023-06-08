@@ -1,10 +1,18 @@
-import { useState, useEffect } from 'react';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { CreateInput, Textaria } from '../../components/CreateInput';
 import { UseAuthValue } from '../../context/AuthContext';
+import { storage } from '../../firebase/config';
 import { useFetchDocument } from '../../hooks/useFetchDocument';
 import { useUpdateDocument } from '../../hooks/useUpdateDocument';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { storage } from '../../firebase/config';
+
+import { LuTag } from 'react-icons/lu';
+import { MdOutlineTextFields } from 'react-icons/md';
+import { RxFilePlus } from 'react-icons/rx';
+
+import { ButtonForm, ContainerForm, Error, Form } from '../../styles/styledsLoaginAndRecord';
+import { Progress } from '../CreatePost/styled';
 
 const EditPost = () => {
   const { id } = useParams();
@@ -83,30 +91,28 @@ const EditPost = () => {
   };
 
   return (
-    <div>
+    <ContainerForm>
       <h2>Editando post: {post?.title}</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Título:
-          <input
-            type='text'
-            name='title'
-            value={title}
-            onChange={e => setTitle(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Mídia (Imagem ou Vídeo):
-          <input
-            type='file'
-            accept='image/*, video/*'
-            onChange={e => setMediaFile(e.target.files[0])}
-          />
-        </label>
+      <Form onSubmit={handleSubmit}>
+        <CreateInput
+          aria-label='Título'
+          Svg={MdOutlineTextFields}
+          type='text'
+          name='title'
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+          required
+        />
+        <CreateInput
+          Svg={RxFilePlus}
+          aria-label='adicione arquivos de Imagem ou Vídeo'
+          type='file'
+          accept='image/*, video/*'
+          onChange={e => setMediaFile(e.target.files[0])}
+        />
         {mediaURL && (
           <div>
-            <p>Preview da imagem atual:</p>
+            <p>Preview da midia atual:</p>
             {post.mediaURL &&
             (post.mediaURL.includes('.mp4') || post.mediaURL.includes('.webm')) ? (
               <video src={post.mediaURL} alt={post.title} controls style={{ width: 300 }} />
@@ -115,43 +121,29 @@ const EditPost = () => {
             )}
           </div>
         )}
-        <label>
-          Conteúdo:
-          <textarea
-            name='body'
-            value={body}
-            onChange={e => setBody(e.target.value)}
-            required
-          ></textarea>
-        </label>
-        <label>
-          Tags:
-          <input
-            type='text'
-            name='tags'
-            value={tags}
-            onChange={e => setTags(e.target.value)}
-            placeholder='Insira as tags separadas por vírgula'
-            required
-          />
-        </label>
-        {progressPercent <= 1 ? (
-          <button className='btn btn-dark' type='submit'>
-            Editar
-          </button>
-        ) : (
-          <>
-            <button className='btn btn-dark' disabled>
-              Postando...
-            </button>
-            <br />
-            <br />
-            <progress value={progressPercent} min='0' max='100' />
-          </>
-        )}
-        {(response.error || formError) && <p>{response.error || formError}</p>}
-      </form>
-    </div>
+        <Textaria
+          aria-label='Descrição'
+          name='body'
+          value={body}
+          onChange={e => setBody(e.target.value)}
+          required
+        ></Textaria>
+        <CreateInput
+          Svg={LuTag}
+          aria-label={'Insira suas tags separadas por vírgula'}
+          type='text'
+          name='tags'
+          value={tags}
+          onChange={e => setTags(e.target.value)}
+          placeholder='Insira as tags separadas por vírgula'
+          required
+        />
+
+        <ButtonForm>{progressPercent < 1 ? 'Postar' : 'Postando...'}</ButtonForm>
+        {progressPercent >= 1 && <Progress value={progressPercent} min='0' max='100' />}
+        {(response.error || formError) && <Error>{response.error || formError}</Error>}
+      </Form>
+    </ContainerForm>
   );
 };
 
