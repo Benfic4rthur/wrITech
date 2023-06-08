@@ -1,10 +1,10 @@
-import { NavLink } from 'react-router-dom';
-import styles from './style.module.css';
-import { UseAuthentication } from '../../hooks/useAuthentication';
-import { UseAuthValue } from '../../context/AuthContext';
 import { MdLogout } from 'react-icons/md';
+import { NavLink } from 'react-router-dom';
 import logo from '../../assets/writech.png';
+import { UseAuthValue } from '../../context/AuthContext';
+import { UseAuthentication } from '../../hooks/useAuthentication';
 import { useUserInfo } from '../../hooks/userName';
+import  { Header, Logo, Nav,NavLinkStyled } from './styled.js';
 
 const index = () => {
   const { user } = UseAuthValue();
@@ -13,77 +13,88 @@ const index = () => {
   const userName = useUserInfo(userEmail);
 
   return (
-    <>
-    <nav className={styles.navbar}>
-      <NavLink to='/' className={styles.brand}>
-        <img src={logo} alt='logo' />
+    <Header>
+      <NavLink to='/'>
+        <Logo src={logo} alt='logo' />
       </NavLink>
 
-      <ul className={styles.links_list}>
+      <Nav>
         {!user && (
           <>
-            <li title='catalog'>
-              <NavLink to='/catalog' className={({ isActive }) => (isActive ? styles.active : '')}>
-                Catalog
-              </NavLink>
-            </li>
-            <li title='entrar'>
-              <NavLink to='/login' className={({ isActive }) => (isActive ? styles.active : '')}>
-                Entrar
-              </NavLink>
-            </li>
-            <li title='cadastrar'>
-              <NavLink to='/register' className={({ isActive }) => (isActive ? styles.active : '')}>
-                Cadastro
-              </NavLink>
-            </li>
+            <NavLinkStyled
+              aria-label='Catálogo de postagens'
+              to='/catalog'
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
+              Catalog
+            </NavLinkStyled>
+            <NavLinkStyled
+              aria-label='pagina para efetuar o login'
+              to='/login'
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
+              Entrar
+            </NavLinkStyled>
+
+            <NavLinkStyled
+              to='/register'
+              aria-label='pagina de cadastro'
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
+              Cadastro
+            </NavLinkStyled>
           </>
         )}
         {user && (
           <>
-            <li title='home'>
-              <NavLink to='/' className={({ isActive }) => (isActive ? styles.active : '')}>
-                Home
-              </NavLink>
-            </li>
-            <li title='catalog'>
-              <NavLink to='/catalog' className={({ isActive }) => (isActive ? styles.active : '')}>
-                Catalog
-              </NavLink>
-            </li>
-            <li title='novo post'>
-              <NavLink
-                to='/create-post'
-                className={({ isActive }) => (isActive ? styles.active : '')}
-              >
-                Novo Post
-              </NavLink>
-            </li>
-            <li title='dashboard'>
-              <NavLink
-                to='/dashboard'
-                className={({ isActive }) => (isActive ? styles.active : '')}
-              >
-                Dashboard
-              </NavLink>
-            </li>
+            <NavLinkStyled
+              aria-label='home'
+              to='/'
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
+              Home
+            </NavLinkStyled>
+
+            <NavLinkStyled
+              aria-label='Catálogo de postagens'
+              to='/catalog'
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
+              Catalog
+            </NavLinkStyled>
+
+            <NavLinkStyled
+              aria-label='novo post'
+              to='/create-post'
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
+              Novo Post
+            </NavLinkStyled>
+
+            <NavLinkStyled
+              aria-label='painel principal'
+              to='/dashboard'
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
+              Dashboard
+            </NavLinkStyled>
           </>
         )}
-        <li title='sobre'>
-          <NavLink to='/about' className={({ isActive }) => (isActive ? styles.active : '')}>
-            Sobre
-          </NavLink>
-        </li>
+        <NavLinkStyled
+          aria-label='sobre'
+          to='/about'
+          className={({ isActive }) => (isActive ? 'active' : '')}
+        >
+          Sobre
+        </NavLinkStyled>
         {user && (
-          <li title='Logout'>
-            <NavLink onClick={logout} className={({ isActive }) => styles.Lo}>
-              <MdLogout />
-            </NavLink>
-          </li>
+          <NavLinkStyled aria-label='desconectar' onClick={logout} className={() => 'Lo'}>
+            <MdLogout />
+          </NavLinkStyled>
         )}
-      </ul>
-    </nav>
-          <div className={styles.nomeUsuario}>{user && <span>/{userName}</span>}</div></>
+      </Nav>
+      {/* <div className={nomeUsuario}>{user && <span>/{userName}</span>}</div> */}
+    </Header>
   );
 };
 

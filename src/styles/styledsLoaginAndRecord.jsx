@@ -20,9 +20,8 @@ export const ContainerForm = styled.section`
   justify-content: center;
   flex-direction: column;
   gap: 3.6rem;
-  border-radius: ${({theme}) => theme.border.radius};
-
-  background-color: hsla(0, 0%, 90%, 0.29);
+  border-radius: ${({ theme }) => theme.border.radius};
+  background-color: ${({ theme }) => theme.color.thirdOpacity03};
 `;
 
 export const Form =

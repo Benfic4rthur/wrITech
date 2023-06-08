@@ -1,9 +1,10 @@
 export const theme = {
   color: {
     first: 'hsl(59, 100%, 76%)',
-    firstHover: 'hsl(59, 70%, 66%)',
+    firstHover: 'hsl(59, 50%, 56%)',
+
     firstBg: '#1C1B1E',
-    first5Alpha: 'rgba(255, 133, 155, 0.05)',
+    first5Alpha: "hsl(260, 10%, 12%, 0.3)",
 
     second: 'hsl(254, 5%, 15%)',
     //  '#948F99',
@@ -13,6 +14,7 @@ export const theme = {
 
     third: '#F4EDE8',
     thirdBg: '#0D0C0F',
+    thirdOpacity03: 'hsl(25, 5%, 96%, 0.3)',
 
     fourth: '#E5E5E5',
     fourthBg: '#3E3B47',

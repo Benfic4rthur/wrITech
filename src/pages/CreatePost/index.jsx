@@ -93,7 +93,6 @@ const CreatePost = () => {
           placeholder='Pense em um título de fácil entendimento...'
           required
         />
-
         <Textaria
           aria-label='Descrição'
           name='body'
