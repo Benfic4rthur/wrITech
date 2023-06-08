@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-import styles from './style.module.css';
-import { UseAuthValue } from '../../context/AuthContext';
-import { useInsertDocument } from '../../hooks/useInsertDocument';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { storage } from '../../firebase/config';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CreateInput, Textaria } from '../../components/CreateInput';
+import { UseAuthValue } from '../../context/AuthContext';
+import { Progress } from './styled.js';
+
+import { LuTag } from 'react-icons/lu';
+import { MdOutlineTextFields } from 'react-icons/md';
+import { RxFilePlus } from 'react-icons/rx';
+import { storage } from '../../firebase/config';
+import { useInsertDocument } from '../../hooks/useInsertDocument';
+
+import { ButtonForm, ContainerForm, Error, Form } from '../../styles/styledsLoaginAndRecord';
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
@@ -18,7 +25,7 @@ const CreatePost = () => {
   const { insertDocument, response } = useInsertDocument('posts');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setFormError('');
 
@@ -36,31 +43,31 @@ const CreatePost = () => {
 
       mediaUploadTask.on(
         'state_changed',
-        (snapshot) => {
+        snapshot => {
           const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
           setProgressPercent(progress);
         },
-        (error) => {
+        error => {
           console.error(error);
         },
         () => {
-          getDownloadURL(mediaUploadTask.snapshot.ref).then((downloadURL) => {
+          getDownloadURL(mediaUploadTask.snapshot.ref).then(downloadURL => {
             setMediaURL(downloadURL);
             savePost(downloadURL);
           });
-        }
+        },
       );
     } catch (error) {
       console.error(error);
     }
   };
 
-  const savePost = (mediaURL) => {
+  const savePost = mediaURL => {
     const post = {
       title,
       mediaURL,
       body,
-      tags: tags.split(',').map((tag) => tag.trim()),
+      tags: tags.split(',').map(tag => tag.trim()),
       uid: user.uid,
       createdBy: user.displayName,
     };
@@ -73,72 +80,53 @@ const CreatePost = () => {
   if (formError) return null;
 
   return (
-    <div className={styles.create_post}>
+    <ContainerForm>
       <h2>Criar novo post</h2>
-      <div className={styles.boxpost}>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <span>Título:</span>
-            <input
-              type="text"
-              name="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Pense em um título de fácil entendimento..."
-              required
-            />
-          </label>
-          <label>
-            <span>Conteúdo:</span>
-            <textarea
-              name="body"
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-              placeholder="Compartilhe suas ideias e seu conhecimento aqui..."
-              required
-            />
-          </label>
-          <label>
-            <span>Tags:</span>
-            <input
-              type="text"
-              name="tags"
-              value={tags}
-              onChange={(e) => setTags(e.target.value)}
-              placeholder="Insira suas tags separadas por vírgula..."
-              required
-            />
-          </label>
-          <label>
-            <span>Mídia (Imagem ou Vídeo):</span>
-            <input
-              type="file"
-              id="mediaFileInput"
-              accept="image/*, video/*"
-              onChange={(e) => {
-                const file = e.target.files[0];
-                // setMediaURL(file); // Remova esta linha
-              }}
-            />
-          </label>
-          {progressPercent <= 1 ? (
-            <button className="btn btn-dark" type="submit">
-              Postar
-            </button>
-          ) : (
-            <>
-              <button className="btn" disabled>
-                Postando...
-              </button>
-              <br />
-              <br />
-              <progress value={progressPercent} min="0" max="100" />
-            </>
-          )}
-          {(response.error || formError) && <p className="error">{response.error || formError}</p>}
-        </form>
-      </div>
-    </div>
+      <Form onSubmit={handleSubmit}>
+        <CreateInput
+          Svg={MdOutlineTextFields}
+          aria-label='Título'
+          type='text'
+          name='title'
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+          placeholder='Pense em um título de fácil entendimento...'
+          required
+        />
+
+        <Textaria
+          aria-label='Conteúdo'
+          name='body'
+          value={body}
+          onChange={e => setBody(e.target.value)}
+          placeholder='Compartilhe suas ideias e seu conhecimento aqui...'
+          required
+        />
+        <CreateInput
+          Svg={LuTag}
+          aria-label={'Insira suas tags separadas por vírgula'}
+          type='text'
+          name='tags'
+          value={tags}
+          onChange={e => setTags(e.target.value)}
+          placeholder='Insira suas tags separadas por vírgula...'
+          required
+        />
+        <CreateInput
+          Svg={RxFilePlus}
+          type='file'
+          aria-label='adicione arquivos de Imagem ou Vídeo'
+          id='mediaFileInput'
+          accept='image/*, video/*'
+        />
+
+        <ButtonForm>{progressPercent < 1 ? 'Postar' : 'Postando...'}</ButtonForm>
+
+        {progressPercent >= 1 && <Progress value={progressPercent} min='0' max='100' />}
+
+        {(response.error || formError) && <Error>{response.error || formError}</Error>}
+      </Form>
+    </ContainerForm>
   );
 };
 

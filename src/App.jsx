@@ -20,6 +20,7 @@ import Footer from './components/Footer';
 import { AuthProvider } from './context/AuthContext';
 //firebase
 import { onAuthStateChanged } from 'firebase/auth';
+import { GlobalStyle } from './global.js';
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -38,7 +39,9 @@ function App() {
   }
 
   return (
-    <AuthProvider value={{ user }}>
+    <>
+      <GlobalStyle />
+      <AuthProvider value={{ user }}>
         <BrowserRouter>
           <div className='App'>
             <Navbar />
@@ -51,14 +54,21 @@ function App() {
                 <Route path='/posts/:id' element={<Post />} />
                 <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
                 <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
-                <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/login' />} />
-                <Route path='/create-post' element={user ? <CreatePost /> : <Navigate to='/login' />} />
+                <Route
+                  path='/dashboard'
+                  element={user ? <Dashboard /> : <Navigate to='/login' />}
+                />
+                <Route
+                  path='/create-post'
+                  element={user ? <CreatePost /> : <Navigate to='/login' />}
+                />
               </Routes>
             </div>
             <Footer />
           </div>
         </BrowserRouter>
       </AuthProvider>
+    </>
   );
 }
 

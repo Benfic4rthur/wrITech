@@ -1,6 +1,9 @@
-import styles from './index.module.css';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { RxEnvelopeClosed, RxLockClosed } from 'react-icons/rx';
+import { CreateInput } from '../../components/CreateInput';
 import { UseAuthentication } from '../../hooks/useAuthentication';
+import { ButtonForm, ContainerForm, Error, Form } from '../../styles/styledsLoaginAndRecord';
+
 const Index = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,43 +26,37 @@ const Index = () => {
       setError(authError);
     }
   }, [authError]);
+
   return (
-    <div className={styles.container}>
-      <div className={styles.login}>
-        <h1>Entrar</h1>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <span>E-mail:</span>
-            <input
-              type='email'
-              name='email'
-              required
-              placeholder='E-mail do usuário'
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-            />
-          </label>
-          <label>
-            <span>Senha:</span>
-            <input
-              type='password'
-              name='password'
-              required
-              placeholder='Senha do usuário'
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
-          </label>
-          {!loading && <button className='btn'>Entrar</button>}
-          {loading && (
-            <button className='btn' disabled>
-              Aguarde...
-            </button>
-          )}
-          {error && <p className='error'>{error}</p>}
-        </form>
-      </div>
-    </div>
+    <ContainerForm>
+      <h1>Entrar</h1>
+      <Form onSubmit={handleSubmit}>
+        <CreateInput
+          Svg={RxEnvelopeClosed}
+          aria-label='Email'
+          type='email'
+          name='email'
+          required
+          placeholder='E-mail do usuário'
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+
+        <CreateInput
+          Svg={RxLockClosed}
+          aria-label='Senha'
+          type='password'
+          name='password'
+          required
+          placeholder='Senha do usuário'
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+
+        <ButtonForm disabled={loading}>{loading ? ' Aguarde...' : 'Entrar'}</ButtonForm>
+        {error && <Error>{error}</Error>}
+      </Form>
+    </ContainerForm>
   );
 };
 

@@ -16,13 +16,13 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.3);
   padding: 10px;
   text-align: center;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .postBox:hover {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.3);
   transform: scale(1.1);
-  transition: .3s;
+  transition: 0.3s;
   border-radius: 20px;
 }
 
@@ -39,6 +39,13 @@
 .title {
   margin-top: 10px;
   font-size: 14px;
+  display: block;
+  margin-bottom: 0.4em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 300px;
+  width: 100%;
 }
 
 .createdBy {
