@@ -99,7 +99,7 @@ const CreatePost = () => {
           name='body'
           value={body}
           onChange={e => setBody(e.target.value)}
-          placeholder='Compartilhe suas ideias e seu conhecimento aqui...'
+          placeholder='Compartilhe seu conhecimento aqui...'
           required
         />
         <CreateInput
