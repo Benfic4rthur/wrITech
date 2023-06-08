@@ -2,12 +2,13 @@
 import styles from './style.module.css';
 
 // hooks
-import { useFetchDocument } from '../../hooks/useFetchDocument';
 import { useParams } from 'react-router-dom';
+import { useFetchDocument } from '../../hooks/useFetchDocument';
 
 const Post = () => {
   const { id } = useParams();
   const { document: post } = useFetchDocument('posts', id);
+  // .mp4, .m4v, .mov .avi 	.mpg  .mpeg .wmv
 
   return (
     <div className={styles.post_container}>
@@ -19,6 +20,7 @@ const Post = () => {
           ) : (
             <img src={post.mediaURL} alt={post.title} />
           )}
+
           <p className={`${styles.body} ${styles.paragraph}`}>{post.body}</p>
           <h3>tags da postagem:</h3>
           <div className={styles.tags}>
