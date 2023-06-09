@@ -37,6 +37,7 @@ export const theme = {
       roboto: '"Roboto", sans-serif',
       robotoSlab: '"Roboto Slab", serif',
     },
+    
   },
   border: {
     radius: '1rem',

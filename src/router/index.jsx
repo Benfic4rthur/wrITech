@@ -1,7 +1,6 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  RouterProvider,
   Outlet,
   Navigate,
   Route,
@@ -24,7 +23,7 @@ const Layout = () => {
   }, [auth]);
 
 
-  
+
 
   return  <AuthProvider value={{ user }}>
             <Navbar />
@@ -51,7 +50,7 @@ const LoginLayout = ( redirectPath, Element) => {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    
+
     <Routes index element={<Layout />}>
       <Route path='dashboard' element={<Dashboard />} />
       <Route path='about' element={<About />} />

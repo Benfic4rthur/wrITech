@@ -5,7 +5,7 @@ export const containerStyleBody = css`
   background: linear-gradient(120.21deg, #888f93 11.18%, #0c6870 74.17%);
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: ${({ theme }) => theme.font.family.roboto};
   height: 100vh;
 `;
 
@@ -64,15 +64,15 @@ export const Title = styled.h2`
   color: ${({theme}) => theme.color.third};
   font-size: ${({theme}) => theme.font.size.xl};
   line-height: ${({theme}) => theme.font.lineHeight};
-  font-family: ${({theme}) => theme.font.family.robotoSlab};
-  font-weight: 400;
+  font-family: ${({theme}) => theme.font.family.roboto};
+  font-weight: 500;
 `;
 
 export const Subtitle = styled.h2`
    color: ${({theme}) => theme.color.third};
    font-size: ${({theme}) => theme.font.size.lg};
    line-height: ${({theme}) => theme.font.lineHeight};
-   font-family: ${({theme}) => theme.font.family.robotoSlab};
+   font-family: ${({theme}) => theme.font.family.roboto};
    font-weight: 500;
 `;
 
