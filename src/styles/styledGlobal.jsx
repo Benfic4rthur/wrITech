@@ -10,18 +10,30 @@ export const containerStyleBody = css`
 `;
 
 export const ContainerHidden = styled.div`
-   height: 100vh;
-   width: 100vw;
+   height: 100%;
+   min-height:100vh;
+   min-width: 100vw;
+   width: 100%;
    display: grid;
    grid-template-columns: 1fr;
-   grid-template-rows: min-content auto;
+   grid-template-rows: min-content auto min-content;
 `;
 
 export const MaxWidth = styled.div`
    margin: 0 auto;
    height: 100%;
    width: min(100%, 141rem);
+   padding-top: 4rem;
    padding-inline: min(7vw, 8rem);
+`;
+export const ContainerCenter = styled.div`
+   height: 100%;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+
 `;
 
 export const MaxWidthScrollbar = styled.div`

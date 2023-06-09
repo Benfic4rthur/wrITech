@@ -1,8 +1,1 @@
-.App{
-  min-height: 65vh;
-  height: 100%;
-  display: grid;
-  grid-template-rows: min-content auto min-content;
-  grid-template-columns: 1fr;
-}
 

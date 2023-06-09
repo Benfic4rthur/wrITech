@@ -12,6 +12,7 @@ import { storage } from '../../firebase/config';
 import { useInsertDocument } from '../../hooks/useInsertDocument';
 
 import { ButtonForm, ContainerForm, Error, Form } from '../../styles/styledsLoaginAndRecord';
+import { ContainerCenter } from '../../styles/styledGlobal';
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
@@ -80,52 +81,55 @@ const CreatePost = () => {
   if (formError) return null;
 
   return (
-    <ContainerForm>
-      <h2>Criar novo post</h2>
-      <Form onSubmit={handleSubmit}>
-        <CreateInput
-          Svg={MdOutlineTextFields}
-          aria-label='Título'
-          type='text'
-          name='title'
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-          placeholder='Pense em um título de fácil entendimento...'
-          required
-        />
-        <Textaria
-          aria-label='Descrição'
-          name='body'
-          value={body}
-          onChange={e => setBody(e.target.value)}
-          placeholder='Compartilhe seu conhecimento aqui...'
-          required
-        />
-        <CreateInput
-          Svg={LuTag}
-          aria-label={'Insira suas tags separadas por vírgula'}
-          type='text'
-          name='tags'
-          value={tags}
-          onChange={e => setTags(e.target.value)}
-          placeholder='Insira suas tags separadas por vírgula...'
-          required
-        />
-        <CreateInput
-          Svg={RxFilePlus}
-          type='file'
-          aria-label='adicione arquivos de Imagem ou Vídeo'
-          id='mediaFileInput'
-          accept='image/*, video/*'
-        />
+    <ContainerCenter>
+      <ContainerForm>
+        <h2>Criar novo post</h2>
+        <Form onSubmit={handleSubmit}>
+          <CreateInput
+            Svg={MdOutlineTextFields}
+            aria-label='Título'
+            type='text'
+            name='title'
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            placeholder='Pense em um título de fácil entendimento...'
+            required
+          />
+          <Textaria
+            aria-label='Descrição'
+            name='body'
+            value={body}
+            onChange={e => setBody(e.target.value)}
+            placeholder='Compartilhe seu conhecimento aqui...'
+            required
+          />
+          <CreateInput
+            Svg={LuTag}
+            aria-label={'Insira suas tags separadas por vírgula'}
+            type='text'
+            name='tags'
+            value={tags}
+            onChange={e => setTags(e.target.value)}
+            placeholder='Insira suas tags separadas por vírgula...'
+            required
+          />
+          <CreateInput
+            Svg={RxFilePlus}
+            type='file'
+            aria-label='adicione arquivos de Imagem ou Vídeo'
+            id='mediaFileInput'
+            accept='image/*, video/*'
+          />
 
-        <ButtonForm>{progressPercent < 1 ? 'Postar' : 'Postando...'}</ButtonForm>
+          <ButtonForm>{progressPercent < 1 ? 'Postar' : 'Postando...'}</ButtonForm>
 
-        {progressPercent >= 1 && <Progress value={progressPercent} min='0' max='100' />}
+          {progressPercent >= 1 && <Progress value={progressPercent} min='0' max='100' />}
 
-        {(response.error || formError) && <Error>{response.error || formError}</Error>}
-      </Form>
-    </ContainerForm>
+          {(response.error || formError) && <Error>{response.error || formError}</Error>}
+        </Form>
+      </ContainerForm>
+      <div></div>
+    </ContainerCenter>
   );
 };
 
