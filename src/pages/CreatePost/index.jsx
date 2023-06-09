@@ -16,7 +16,7 @@ import { ContainerCenter } from '../../styles/styledGlobal';
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
-  const [mediaURL, setMediaURL] = useState('');
+  const [, setMediaURL] = useState('');
   const [progressPercent, setProgressPercent] = useState(0);
   const [body, setBody] = useState('');
   const [tags, setTags] = useState('');
