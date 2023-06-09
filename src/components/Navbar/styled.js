@@ -10,6 +10,18 @@ export const Header = styled.header`
   height: 7rem;
   padding: 0.5em 2em;
   background-color: transparent;
+
+  div{
+    display: flex;
+    align-items: center;
+  }
+  span{
+    color: ${({ theme }) => theme.color.third};
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: -3px;
+    margin-left: -25px;
+  }
 `;
 
 export const Nav = styled.nav`

@@ -43,6 +43,17 @@ const index = () => {
               aria-label='pagina de cadastro'
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
+              Cadastro de usuário
+            </NavLinkStyled>
+          </>
+        )}
+        {user && user.email === 'arthur_benfica@hotmail.com' && (
+          <>
+            <NavLinkStyled
+              to='/register'
+              aria-label='pagina de cadastro'
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
               Cadastro
             </NavLinkStyled>
           </>

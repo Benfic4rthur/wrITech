@@ -50,6 +50,7 @@ export const UseAuthentication = () => {
       } else {
         systemMessageError =
           'Ocorreu um erro ao criar o usuário, por favor tente novamente mais tarde!';
+          //setSuccessMessage('Usuário cadastrado com sucesso!'); // Definir a mensagem de sucesso
       }
       setLoading(false);
       setError(systemMessageError);

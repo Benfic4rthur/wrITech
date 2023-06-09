@@ -12,7 +12,7 @@ export const theme = {
 
     // '#262529',
 
-    third: '#F4EDE8',
+    third: 'rgb(43, 43, 43)',
     thirdBg: '#0D0C0F',
     thirdOpacity03: 'hsl(25, 5%, 96%, 0.3)',
 

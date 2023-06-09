@@ -4,7 +4,7 @@ import { CreateInput } from '../../components/CreateInput';
 import { UseAuthentication } from '../../hooks/useAuthentication';
 import { useInsertUserInfo } from '../../hooks/userNameANDphoneNumber';
 import { HiOutlinePhone } from 'react-icons/hi';
-import { RxEnvelopeClosed, RxLockClosed,  RxAvatar, RxPerson } from 'react-icons/rx';
+import { RxEnvelopeClosed, RxLockClosed, RxAvatar, RxPerson } from 'react-icons/rx';
 
 import { ButtonForm, ContainerForm, Error, Form } from '../../styles/styledsLoaginAndRecord';
 
@@ -13,19 +13,17 @@ const Index = () => {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [userName, setUserName] = useState('');
-  const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
-  const { createUser, error: authError, loading, successMessage } = UseAuthentication();
+  const { createUser, error: authError, loading, successMessage, auth } = UseAuthentication();
   const { insertUserInfo } = useInsertUserInfo('userInfo');
 
   const handleSubmit = async e => {
     e.preventDefault();
     setError('');
 
-    // Remover caracteres não numéricos do número de telefone
     const cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
     const userIdMail = email;
 
@@ -43,9 +41,12 @@ const Index = () => {
       return;
     }
 
+    const currentUser = auth.currentUser; // Salvar o usuário atual
+
     await createUser(user);
 
     if (!loading && !authError) {
+      await auth.updateCurrentUser(currentUser); // Restaurar o usuário atual (usuário administrador)
       insertUserInfo(cleanedPhoneNumber, userName, userIdMail);
     }
   };
