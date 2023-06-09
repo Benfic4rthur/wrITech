@@ -9,7 +9,7 @@ import { useFetchDocuments } from '../../hooks/useFetchDocuments';
 //components
 import PostDetailsHome from '../../components/PostDetailsHome';
 
-const index = () => {
+const Index = () => {
   const [query, setQuery] = useState('');
   const { documents: posts, loading } = useFetchDocuments('posts');
   const navigate = useNavigate();
@@ -48,4 +48,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

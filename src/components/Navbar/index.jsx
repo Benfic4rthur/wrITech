@@ -95,7 +95,6 @@ const Index = () => {
           </NavLinkStyled>
         )}
       </Nav>
-      {user && <span>/{userName}</span>}
     </Header>
   );
 };

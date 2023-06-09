@@ -7,6 +7,7 @@ export const containerStyleBody = css`
   margin: 0;
   font-family: ${({ theme }) => theme.font.family.roboto};
   height: 100vh;
+  overflow-x: hidden;
 `;
 
 export const ContainerHidden = styled.div`
@@ -41,21 +42,21 @@ export const MaxWidthScrollbar = styled.div`
 
    overflow: overlay;
 
-   ::-webkit-scrollbar {
+   &::-webkit-scrollbar {
       width: 0.8rem;
       height: 0.8rem;
    }
 
-   ::-webkit-scrollbar-track {
+   &::-webkit-scrollbar-track {
       background: transparent;
    }
 
-   ::-webkit-scrollbar-thumb {
+   &::-webkit-scrollbar-thumb {
       background: ${({theme}) => theme.color.first};
       border-radius: ${({theme}) => theme.border.radius};
    }
 
-   ::-webkit-scrollbar-thumb:hover {
+   &::-webkit-scrollbar-thumb:hover {
       background: ${({theme}) => theme.color.firstHover};
    }
 `;

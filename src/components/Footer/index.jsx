@@ -5,7 +5,7 @@ const year = date.getFullYear();
 const Index = () => {
     return (
         <footer className={styles.footer}>
-            <h3>Compartilhe seu conhecimento!</h3>
+            {/*<h3>Compartilhe seu conhecimento!</h3>*/}
             <p><img src={logo} alt='logo'/>  &copy; {year}</p>
         </footer>
     );

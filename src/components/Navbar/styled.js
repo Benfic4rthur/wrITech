@@ -9,6 +9,7 @@ export const Header = styled.header`
   align-items: center;
   height: 7rem;
   padding: 0.5em 2em;
+  padding-right: 30px;
   background-color: transparent;
 
   div{
