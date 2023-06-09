@@ -6,7 +6,7 @@ import { UseAuthentication } from '../../hooks/useAuthentication';
 import { useUserInfo } from '../../hooks/userName';
 import { Header, Logo, Nav, NavLinkStyled } from './styled.js';
 
-const index = () => {
+const Index = () => {
   const { user } = UseAuthValue();
   const { logout } = UseAuthentication();
   const userEmail = user ? user.email : '';
@@ -36,14 +36,6 @@ const index = () => {
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
               Entrar
-            </NavLinkStyled>
-
-            <NavLinkStyled
-              to='/register'
-              aria-label='pagina de cadastro'
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              Cadastro de usuário
             </NavLinkStyled>
           </>
         )}
@@ -110,4 +102,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react';
 import InputMask from 'react-input-mask';
 import { CreateInput } from '../../components/CreateInput';
 import { UseAuthentication } from '../../hooks/useAuthentication';
-import { useInsertUserInfo } from '../../hooks/userNameANDphoneNumber';
 import { HiOutlinePhone } from 'react-icons/hi';
 import { RxEnvelopeClosed, RxLockClosed, RxAvatar, RxPerson } from 'react-icons/rx';
 
-import { ButtonForm, ContainerForm, Error, Form } from '../../styles/styledsLoaginAndRecord';
+import { ButtonForm, ContainerForm, Error, Form, Success } from '../../styles/styledsLoaginAndRecord';
 
 const Index = () => {
   const [displayName, setDisplayName] = useState('');
@@ -18,7 +17,6 @@ const Index = () => {
   const [error, setError] = useState('');
 
   const { createUser, error: authError, loading, successMessage, auth } = UseAuthentication();
-  const { insertUserInfo } = useInsertUserInfo('userInfo');
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -47,7 +45,6 @@ const Index = () => {
 
     if (!loading && !authError) {
       await auth.updateCurrentUser(currentUser); // Restaurar o usuário atual (usuário administrador)
-      insertUserInfo(cleanedPhoneNumber, userName, userIdMail);
     }
   };
 
@@ -131,7 +128,7 @@ const Index = () => {
 
         <ButtonForm disabled={loading}>{loading ? ' Aguarde...' : 'Cadastrar'}</ButtonForm>
         {error && <Error>{error}</Error>}
-        {successMessage && <p className='success'>{successMessage}</p>}
+        {successMessage && <Success><p className='success'>{successMessage}</p></Success>}
       </Form>
     </ContainerForm>
   );

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import InputMask from 'react-input-mask';
 import { CreateInput } from '../../components/CreateInput';
 import { UseAuthentication } from '../../hooks/useAuthentication';
-import { useInsertUserInfo } from '../../hooks/userNameANDphoneNumber';
 import { HiOutlinePhone } from 'react-icons/hi';
 import { RxEnvelopeClosed, RxLockClosed,  RxAvatar, RxPerson } from 'react-icons/rx';
 
@@ -13,13 +12,13 @@ const Index = () => {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [userName, setUserName] = useState('');
-  const [userId, setUserId] = useState('');
+  //const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
   const { createUser, error: authError, loading, successMessage } = UseAuthentication();
-  const { insertUserInfo } = useInsertUserInfo('userInfo');
+
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -43,11 +42,10 @@ const Index = () => {
       return;
     }
 
-    await createUser(user);
+    //await insertUserInfo(cleanedPhoneNumber, userName, userIdMail);
 
-    if (!loading && !authError) {
-      insertUserInfo(cleanedPhoneNumber, userName, userIdMail);
-    }
+      await createUser(user)
+    
   };
 
   useEffect(() => {
@@ -55,6 +53,8 @@ const Index = () => {
       setError(authError);
     }
   }, [authError]);
+
+
 
   return (
     <ContainerForm>

@@ -78,6 +78,13 @@ export const Error = styled.p`
   border-radius: 1rem;
   background: hsl(0, 80%, 90%);
 `;
+export const Success = styled.p`
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  color: hsl(126.08695652173913, 97.18309859154931%, 41.764705882352935%);
+  border-radius: 1rem;
+  background: hsl(129.60000000000002, 11.013215859030836%, 55.490196078431374%);
+`;
 
 // export const Description = styled.p`
 //   color: ${({theme}) => theme.color.fourth};

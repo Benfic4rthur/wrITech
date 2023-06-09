@@ -6,7 +6,7 @@ import { UseAuthentication } from '../../hooks/useAuthentication';
 import { useUserInfo } from '../../hooks/userName';
 import { Header, Logo, Nav, NavLinkStyled } from './styled.js';
 
-const index = () => {
+const Index = () => {
   const { user } = UseAuthValue();
   const { logout } = UseAuthentication();
   const userEmail = user ? user.email : '';
@@ -99,4 +99,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

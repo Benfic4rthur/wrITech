@@ -2,7 +2,7 @@ import styles from './style.module.css';
 import logo from '../../assets/logofooter.png';
 const date = new Date();
 const year = date.getFullYear();
-const index = () => {
+const Index = () => {
     return (
         <footer className={styles.footer}>
             <h3>Compartilhe seu conhecimento!</h3>
@@ -11,4 +11,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Index;
