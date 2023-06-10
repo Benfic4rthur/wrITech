@@ -3,12 +3,12 @@ import { initializeApp } from 'firebase/app';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBMyL1xCUvibSUJ_CiiUT5dd45boiz7WRo",
-  authDomain: "mini-blog-cc5c5.firebaseapp.com",
-  projectId: "mini-blog-cc5c5",
-  storageBucket: "mini-blog-cc5c5.appspot.com",
-  messagingSenderId: "662572321784",
-  appId: "1:662572321784:web:8d0ca2e5ab4e5301cb240d",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // Initialize Firebase
