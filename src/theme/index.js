@@ -2,7 +2,6 @@ export const theme = {
   color: {
     first: 'hsl(59, 100%, 76%)',
     firstHover: 'hsl(59, 50%, 56%)',
-
     firstBg: '#1C1B1E',
     first5Alpha: 'hsl(260, 10%, 12%, 0.3)',
 

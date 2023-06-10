@@ -39,6 +39,27 @@ export const ContainerCenter = styled.div`
   align-items: center;
 `;
 
+export const CreatePostButton = styled.a`
+  color: ${({ theme }) => theme.color.fourth};
+  background-color: ${({ theme }) => theme.color.first5Alpha};
+  text-decoration: none;
+  font-size: ${({ theme }) => theme.font.size.base};
+  border-radius: ${({ theme }) => theme.border.radius};
+  padding: 1.5rem 3rem;
+  transition: 300ms;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+
+  &:hover {
+    color: ${({ theme }) => theme.color.firstHover};
+    background-color: ${({ theme }) => theme.color.third};
+  }
+`;
+
+// --------------------- //
+
 export const MaxWidthScrollbar = styled.div`
   width: 100%;
 
