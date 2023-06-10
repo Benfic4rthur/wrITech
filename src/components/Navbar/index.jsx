@@ -82,13 +82,7 @@ const Index = () => {
             </NavLinkStyled>
           </>
         )}
-        <NavLinkStyled
-          aria-label='sobre'
-          to='/about'
-          className={({ isActive }) => (isActive ? 'active' : '')}
-        >
-          Sobre
-        </NavLinkStyled>
+
         {user && (
           <NavLinkStyled aria-label='desconectar' onClick={logout} className={() => 'Lo'}>
             <MdLogout />

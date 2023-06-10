@@ -1,7 +1,9 @@
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { CreateInput, Textaria } from '../../components/CreateInput';
+import { CreateInput } from '../../components/CreateInput';
+import { Textaria } from '../../components/CreateInput/styled';
+
 import { UseAuthValue } from '../../context/AuthContext';
 import { storage } from '../../firebase/config';
 import { useFetchDocument } from '../../hooks/useFetchDocument';

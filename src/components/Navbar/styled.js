@@ -4,19 +4,19 @@ import { styled } from 'styled-components';
 
 export const Header = styled.header`
   display: flex;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px -3px 10px 0px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 10px 0px;
   justify-content: space-between;
   align-items: center;
   height: 7rem;
-  padding: 0.5em 2em;
-  padding-right: 30px;
-  background-color: transparent;
+  padding: 0.5rem 2rem;
+  width: 100%;
+  background-color: ${({ theme }) => theme.color.fifth};
 
-  div{
+  div {
     display: flex;
     align-items: center;
   }
-  span{
+  span {
     color: ${({ theme }) => theme.color.third};
     font-weight: 600;
     font-size: 1.5rem;

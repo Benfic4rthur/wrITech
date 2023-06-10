@@ -1,13 +1,24 @@
-import styles from './style.module.css';
 import logo from '../../assets/logofooter.png';
+import { NavLinkStyled } from '../Navbar/styled';
+import { Description, Footer, ImgFooter } from './styled';
 const date = new Date();
 const year = date.getFullYear();
 const Index = () => {
     return (
-        <footer className={styles.footer}>
-            {/*<h3>Compartilhe seu conhecimento!</h3>*/}
-            <p><img src={logo} alt='logo'/>  &copy; {year}</p>
-        </footer>
+      <Footer>
+        {/*<h3>Compartilhe seu conhecimento!</h3>*/}
+        <Description>
+          <ImgFooter src={logo} alt='logo' /> &copy; {year}
+        </Description>
+
+        <NavLinkStyled
+          aria-label='sobre'
+          to='/about'
+          className={({ isActive }) => (isActive ? 'active' : '')}
+        >
+          Sobre
+        </NavLinkStyled>
+      </Footer>
     );
 };
 
