@@ -1,11 +1,20 @@
 import { Link } from 'react-router-dom';
 
-import { LuEdit, LuEye, LuTrash2 } from 'react-icons/lu';
+import { LuEdit, LuEye, LuPlus, LuTrash2 } from 'react-icons/lu';
 import { UseAuthValue } from '../../context/AuthContext';
 import { useDeleteDocument } from '../../hooks/useDeleteDocument';
 import { useFetchDocuments } from '../../hooks/useFetchDocuments';
-import { Subtitle, Title } from '../../styles/styledGlobal';
-import { ButtonEvent, ContainerButtonEvent, ContainerCreatePost, ContainerPost, CreatePost, CreatePostTitle, Post, TitlePost } from './styled';
+import { CreatePostButton, Subtitle } from '../../styles/styledGlobal';
+import {
+  ButtonEvent,
+  ContainerButtonEvent,
+  ContainerCreatePost,
+  ContainerHeader,
+  ContainerPost,
+  CreatePostTitle,
+  Post,
+  TitlePost,
+} from './styled';
 
 const Dashboard = () => {
   const { user } = UseAuthValue();
@@ -17,14 +26,15 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Title>Dashboard</Title>
-      <Subtitle>Gerencie os seus posts</Subtitle>
+      <ContainerHeader>
+        <Subtitle>Gerencie os seus posts</Subtitle>
+        <CreatePostButton as={Link} to='/create-post' className='btn btn-dark'>
+          Criar Post <LuPlus size={17}/>
+        </CreatePostButton>
+      </ContainerHeader>
       {posts?.length == 0 && (
         <ContainerCreatePost>
           <CreatePostTitle>Não foram encontrados posts</CreatePostTitle>
-          <CreatePost as={Link} to='/create-post' className='btn btn-dark'>
-            Criar Primeiro Post
-          </CreatePost>
         </ContainerCreatePost>
       )}
 
