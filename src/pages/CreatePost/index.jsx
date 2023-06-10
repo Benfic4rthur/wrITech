@@ -1,7 +1,7 @@
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CreateInput, Textaria } from '../../components/CreateInput';
+import { CreateInput } from '../../components/CreateInput';
 import { UseAuthValue } from '../../context/AuthContext';
 import { Progress } from './styled.js';
 
@@ -13,6 +13,7 @@ import { useInsertDocument } from '../../hooks/useInsertDocument';
 
 import { ButtonForm, ContainerForm, Error, Form } from '../../styles/styledsLoaginAndRecord';
 import { ContainerCenter } from '../../styles/styledGlobal';
+import { Textaria } from '../../components/CreateInput/styled';
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
