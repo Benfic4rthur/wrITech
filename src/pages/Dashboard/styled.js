@@ -15,21 +15,6 @@ export const CreatePostTitle = styled.h2`
   width: fit-content;
 `;
 
-export const CreatePost = styled.a`
-  color: ${theme.color.fourth};
-  background-color: ${theme.color.third};
-  text-decoration: none;
-  font-size: ${theme.font.size.base};
-  border-radius: ${theme.border.radius};
-  padding: 1.5rem 3rem;
-  transition: 300ms;
-
-  &:hover {
-    color: ${theme.color.firstHover};
-    background-color: ${theme.color.fourthBg};
-  }
-`;
-
 export const ContainerPost = styled.section`
   display: flex;
   height: 100%;
@@ -86,6 +71,14 @@ export const ContainerButtonEvent = styled.section`
   display: flex;
   flex-direction: row;
   gap: 1rem;
+`;
+
+export const ContainerHeader = styled.section`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 3rem;
 `;
 
 // .dashboard {

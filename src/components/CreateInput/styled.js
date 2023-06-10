@@ -13,7 +13,7 @@ export const InputStyled = styled.input`
   outline: none;
   background-color: ${({ theme }) => theme.color.secondBg};
   border-radius: ${({ theme }) => theme.border.radius};
-  color: ${({ theme }) => theme.color.fifth};
+  color: ${({ theme }) => theme.color.second};
   font-family: ${({ theme }) => theme.font.family.robotoSlab};
   line-height: ${({ theme }) => theme.font.lineHeight};
 
@@ -46,7 +46,7 @@ export const Textaria = styled.textarea`
   width: 100%;
   height: 15rem;
   padding: 1.6rem;
-  color: ${({ theme }) => theme.color.fifth};
+  color: ${({ theme }) => theme.color.second};
   border-radius: ${({ theme }) => theme.border.radius};
   font-family: ${({ theme }) => theme.font.family.roboto};
   line-height: ${({ theme }) => theme.font.lineHeight};

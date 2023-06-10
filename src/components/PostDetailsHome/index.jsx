@@ -1,33 +1,26 @@
 import { Link } from 'react-router-dom';
-import styles from './style.module.css';
+import { Author, ContainerPost, ContainerTag, Image, Tag, Title, Video } from './styled';
 
 const index = ({ post }) => {
   const { title, createdBy, tags, mediaURL, id } = post;
 
   return (
-    <div className={styles.post_detail}>
+    <ContainerPost>
       <Link to={`/posts/${id}`}>
         {mediaURL && (mediaURL.includes('.mp4') || mediaURL.includes('.webm')) ? (
-          <video src={mediaURL} alt={title} />
+          <Video src={mediaURL} alt={title} />
         ) : (
-          <img src={mediaURL} alt={title} />
+          <Image src={mediaURL} alt={title} />
         )}
       </Link>
-      <h2>{title}</h2>
-      <p className={styles.createdby}>{createdBy}</p>
-      <div className={styles.tags}>
+      <Title>{title}</Title>
+      <Author >Autor: {createdBy}</Author>
+      <ContainerTag>
         {tags.map(tag => (
-          <p key={tag}>
-            <span>#</span>
-            {tag}
-          </p>
+          <Tag key={tag}>{tag}</Tag>
         ))}
-      </div>
-      <Link to={`/posts/${id}`} className='btn btn-outline'>
-        Ver mais...
-      </Link>
-      <hr></hr>
-    </div>
+      </ContainerTag>
+    </ContainerPost>
   );
 };
 

@@ -1,5 +1,4 @@
 // CSS
-import styles from './style.module.css';
 
 // hooks
 import { useParams } from 'react-router-dom';
@@ -11,7 +10,7 @@ const Post = () => {
   // .mp4, .m4v, .mov .avi 	.mpg  .mpeg .wmv
 
   return (
-    <div className={styles.post_container}>
+    <div>
       {post && (
         <>
           <h1>{post.title}</h1>
@@ -21,9 +20,9 @@ const Post = () => {
             <img src={post.mediaURL} alt={post.title} />
           )}
 
-          <p className={`${styles.body} ${styles.paragraph}`}>{post.body}</p>
+          <p >{post.body}</p>
           <h3>tags da postagem:</h3>
-          <div className={styles.tags}>
+          <div >
             {post.tags.map(tag => (
               <p key={tag}>
                 <span>#</span>
@@ -31,7 +30,7 @@ const Post = () => {
               </p>
             ))}
           </div>
-          <p className={styles.createdby}>{post.createdBy}</p>
+          <p >{post.createdBy}</p>
         </>
       )}
     </div>
