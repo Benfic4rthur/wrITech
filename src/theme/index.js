@@ -4,23 +4,19 @@ export const theme = {
     firstHover: 'hsl(59, 50%, 56%)',
 
     firstBg: '#1C1B1E',
-    first5Alpha: "hsl(260, 10%, 12%, 0.3)",
+    first5Alpha: 'hsl(260, 10%, 12%, 0.3)',
 
     second: 'hsl(254, 5%, 15%)',
-    //  '#948F99',
     secondBg: 'hsl(254, 5%, 55%)',
-
-    // '#262529',
 
     third: 'rgb(43, 43, 43)',
     thirdBg: '#0D0C0F',
-    thirdOpacity03: 'hsl(25, 5%, 96%, 0.3)',
+    thirdOpacity03: 'hsl(25, 5%, 86%, 0.3)',
 
     fourth: '#E5E5E5',
-    fourthBg: '#3E3B47',
+    fourthBg: '#888f93',
 
-    fifth: 'hsl(254, 5%, 25%)',
-    // '#999591',
+    fifth: 'hsl(185, 95%, 24%)',
     error: '#f15856',
   },
   font: {
@@ -37,7 +33,6 @@ export const theme = {
       roboto: '"Roboto", sans-serif',
       robotoSlab: '"Roboto Slab", serif',
     },
-    
   },
   border: {
     radius: '1rem',

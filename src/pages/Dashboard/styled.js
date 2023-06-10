@@ -47,7 +47,7 @@ export const Post = styled.div`
   align-items: center;
   padding-inline: 2.5rem;
   padding-block: 1.5rem;
-  background-color: ${theme.color.fourthBg};
+  background-color: ${theme.color.first5Alpha};
   border-radius: ${theme.border.radius};
 `;
 

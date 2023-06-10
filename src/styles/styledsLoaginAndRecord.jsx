@@ -28,7 +28,6 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: 1.4rem;
 `;
 
@@ -81,9 +80,9 @@ export const Error = styled.p`
 export const Success = styled.p`
   padding: 0.8rem;
   font-size: 1.2rem;
-  color: hsl(126.08695652173913, 97.18309859154931%, 41.764705882352935%);
+  color: hsl(126, 97%, 41%);
   border-radius: 1rem;
-  background: hsl(129.60000000000002, 11.013215859030836%, 55.490196078431374%);
+  background-color: hsl(129, 11%, 55%);
 `;
 
 // export const Description = styled.p`
