@@ -20,7 +20,7 @@ export const Header = styled.header`
     color: ${({ theme }) => theme.color.third};
     font-weight: 600;
     font-size: 1.5rem;
-    margin-bottom: -3px;
+    margin-bottom: 1px;
     margin-left: -25px;
   }
 `;
