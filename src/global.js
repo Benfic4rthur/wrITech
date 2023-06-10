@@ -1,8 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-// import { theme } from './theme';
-import { containerStyleBody } from './styles/styledGlobal';
-
-// const { color, border } = theme;
+// import { containerStyleBody } from './styles/styledGlobal';
 
 export const GlobalStyle = createGlobalStyle`
    *{
@@ -10,14 +7,28 @@ export const GlobalStyle = createGlobalStyle`
       border: none;
       padding:0;
       outline: none;
-      box-sizing:border-box;
+      box-sizing: border-box;
+      transition: 0;
+      &:focus{
+         outline:  ${({ theme }) => theme.color.first} solid 2px ;
+         outline-offset: .3rem;
+      }
    }
    html {
       font-size: 62.5%;
       width: 100%;
-      height: min(100%, 100vh);
+      height: 100%;
+      min-height: 100vh;
    }
    body {
-   ${containerStyleBody}
-}
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color:  ${({ theme }) => theme.color.fourthBg};
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      font-family: ${({ theme }) => theme.font.family.roboto};
+      min-height: 100vh;
+      height: 100%;
+   }
 `;
