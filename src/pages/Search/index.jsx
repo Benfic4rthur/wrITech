@@ -1,4 +1,3 @@
-import styles from "./style.module.css";
 // hooks
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useQuery } from "../../hooks/useQuery";
@@ -12,13 +11,13 @@ const index = () => {
   const search = query.get("q");
   const { documents: posts } = useFetchDocuments("posts", search);
   return (
-    <div className={styles.search_container}>
+    <div >
       <h1>Resultados encontrados para: {search}</h1>
-      <div className="post-list">
+      <div >
         {posts && posts.length === 0 && (
-          <div className={styles.noposts}>
+          <div>
             <p>Não foram encontrados resultados a partir da sua busca...</p>
-            <Link to="/" className="btn btn-dark">
+            <Link to="/" >
               Voltar
             </Link>
           </div>
