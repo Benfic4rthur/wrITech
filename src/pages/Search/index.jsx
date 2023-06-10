@@ -1,4 +1,4 @@
-import styles from "./style.module.css";
+import styles from "./style.modules.css"
 // hooks
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useQuery } from "../../hooks/useQuery";
@@ -7,7 +7,7 @@ import { useQuery } from "../../hooks/useQuery";
 import PostDetail from "../../components/PostDetails";
 import { Link } from "react-router-dom";
 
-const index = () => {
+const Index = () => {
   const query = useQuery();
   const search = query.get("q");
   const { documents: posts } = useFetchDocuments("posts", search);
@@ -29,4 +29,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
