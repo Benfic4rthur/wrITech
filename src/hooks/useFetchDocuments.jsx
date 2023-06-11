@@ -17,15 +17,14 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
       try {
         let q;
         if (search) {
+          const searchTokens = generateSearchTokens(search);
           q = await query(
             collectionRef,
-            where('title', '==', search),
+            where('searchTokens', 'array-contains-any', searchTokens),
             orderBy('createdAt', 'desc'),
           );
-          //    q = await query(collectionRef, where('tags', 'array-contains', search), orderBy('createdAt', 'desc'));
         } else if (uid) {
           q = await query(collectionRef, where('uid', '==', uid), orderBy('createdAt', 'desc'));
-          //q = await query(collectionRef, orderBy('createdAt', 'desc')); // busca todos os posts, é destinado para o adm esta query
         } else {
           q = await query(collectionRef, orderBy('createdAt', 'desc'));
         }
@@ -50,5 +49,11 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
   useEffect(() => {
     return () => setCancelled(true);
   }, []);
+
+  const generateSearchTokens = search => {
+    const tokens = search.split(' ');
+    return tokens;
+  };
+
   return { documents, loading, error };
 };

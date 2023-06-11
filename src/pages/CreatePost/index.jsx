@@ -4,13 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { CreateInput } from '../../components/CreateInput';
 import { UseAuthValue } from '../../context/AuthContext';
 import { Progress } from './styled.js';
-
 import { LuTag } from 'react-icons/lu';
 import { MdOutlineTextFields } from 'react-icons/md';
 import { RxFilePlus } from 'react-icons/rx';
 import { storage } from '../../firebase/config';
 import { useInsertDocument } from '../../hooks/useInsertDocument';
-
 import { ButtonForm, ContainerForm, Error, Form } from '../../styles/styledsLoaginAndRecord';
 import { ContainerCenter } from '../../styles/styledGlobal';
 import { Textaria } from '../../components/CreateInput/styled';
@@ -27,7 +25,7 @@ const CreatePost = () => {
   const { insertDocument, response } = useInsertDocument('posts');
   const navigate = useNavigate();
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormError('');
 
@@ -45,31 +43,32 @@ const CreatePost = () => {
 
       mediaUploadTask.on(
         'state_changed',
-        snapshot => {
+        (snapshot) => {
           const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
           setProgressPercent(progress);
         },
-        error => {
+        (error) => {
           console.error(error);
         },
         () => {
-          getDownloadURL(mediaUploadTask.snapshot.ref).then(downloadURL => {
+          getDownloadURL(mediaUploadTask.snapshot.ref).then((downloadURL) => {
             setMediaURL(downloadURL);
             savePost(downloadURL);
           });
-        },
+        }
       );
     } catch (error) {
       console.error(error);
     }
   };
 
-  const savePost = mediaURL => {
+  const savePost = (mediaURL) => {
     const post = {
       title,
       mediaURL,
       body,
-      tags: tags.split(',').map(tag => tag.trim()),
+      searchTokens: generateSearchTokens(title), // Adiciona os tokens de busca
+      tags: tags.split(',').map((tag) => tag.trim()),
       uid: user.uid,
       createdBy: user.displayName,
     };
@@ -77,6 +76,11 @@ const CreatePost = () => {
     insertDocument(post);
 
     navigate('/');
+  };
+
+  const generateSearchTokens = (title) => {
+    const tokens = title.split(' ');
+    return tokens;
   };
 
   if (formError) return null;
@@ -88,43 +92,43 @@ const CreatePost = () => {
         <Form onSubmit={handleSubmit}>
           <CreateInput
             Svg={MdOutlineTextFields}
-            aria-label='Título'
-            type='text'
-            name='title'
+            aria-label="Título"
+            type="text"
+            name="title"
             value={title}
-            onChange={e => setTitle(e.target.value)}
-            placeholder='Pense em um título de fácil entendimento...'
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Pense em um título de fácil entendimento..."
             required
           />
           <Textaria
-            aria-label='Descrição'
-            name='body'
+            aria-label="Descrição"
+            name="body"
             value={body}
-            onChange={e => setBody(e.target.value)}
-            placeholder='Compartilhe seu conhecimento aqui...'
+            onChange={(e) => setBody(e.target.value)}
+            placeholder="Compartilhe seu conhecimento aqui..."
             required
           />
           <CreateInput
             Svg={LuTag}
             aria-label={'Insira suas tags separadas por vírgula'}
-            type='text'
-            name='tags'
+            type="text"
+            name="tags"
             value={tags}
-            onChange={e => setTags(e.target.value)}
-            placeholder='Insira suas tags separadas por vírgula...'
+            onChange={(e) => setTags(e.target.value)}
+            placeholder="Insira suas tags separadas por vírgula..."
             required
           />
           <CreateInput
             Svg={RxFilePlus}
-            type='file'
-            aria-label='adicione arquivos de Imagem ou Vídeo'
-            id='mediaFileInput'
-            accept='image/*, video/*'
+            type="file"
+            aria-label="adicione arquivos de Imagem ou Vídeo"
+            id="mediaFileInput"
+            accept="image/*, video/*"
           />
 
           <ButtonForm>{progressPercent < 1 ? 'Postar' : 'Postando...'}</ButtonForm>
 
-          {progressPercent >= 1 && <Progress value={progressPercent} min='0' max='100' />}
+          {progressPercent >= 1 && <Progress value={progressPercent} min="0" max="100" />}
 
           {(response.error || formError) && <Error>{response.error || formError}</Error>}
         </Form>
