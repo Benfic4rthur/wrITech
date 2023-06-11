@@ -25,7 +25,9 @@ const index = ({ post }) => {
         </ContainerMidia>
       )}
 
-      <Title>{title}</Title>
+      <Title aria-label={title} title={title}>
+        {title}
+      </Title>
       <Author>Autor: {createdBy}</Author>
       <ContainerTag>
         {tags.map(tag => (

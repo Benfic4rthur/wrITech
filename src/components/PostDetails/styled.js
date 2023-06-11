@@ -10,6 +10,7 @@ export const Container = styled.a`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  width: 29rem;
   padding: 1.5rem;
   padding-bottom: 1rem;
   border-radius: ${({ theme }) => theme.border.radius};
@@ -47,4 +48,8 @@ export const Video = styled.video`
 export const Title = styled.h2`
   font-size: ${({ theme }) => theme.font.size.base};
   padding: 0.5rem;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

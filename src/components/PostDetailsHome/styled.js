@@ -57,8 +57,12 @@ export const ContainerTag = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: ${({theme})=>theme.font.size.base};
-  color: ${({theme})=>theme.color.thirdBg};
+  font-size: ${({ theme }) => theme.font.size.base};
+  color: ${({ theme }) => theme.color.thirdBg};
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 export const Author = styled.h3`
   font-size: ${({theme})=>theme.font.size.xs};
