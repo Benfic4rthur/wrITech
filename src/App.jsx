@@ -21,7 +21,7 @@ import { AuthProvider } from './context/AuthContext';
 //firebase
 import { onAuthStateChanged } from 'firebase/auth';
 import { GlobalStyle } from './global.js';
-import { ContainerHidden, MaxWidth } from './styles/styledGlobal';
+import { ContainerHidden, Main } from './styles/styledGlobal';
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -46,7 +46,7 @@ function App() {
         <BrowserRouter>
           <ContainerHidden>
             <Navbar />
-            <MaxWidth>
+            <Main>
               <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/catalog' element={<Catalog />} />
@@ -68,7 +68,7 @@ function App() {
                   element={user ? <EditPost /> : <Navigate to='/login' />}
                 />
               </Routes>
-            </MaxWidth>
+            </Main>
             <Footer />
           </ContainerHidden>
         </BrowserRouter>

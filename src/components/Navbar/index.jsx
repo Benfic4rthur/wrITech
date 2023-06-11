@@ -4,7 +4,7 @@ import logo from '../../assets/writech.png';
 import { UseAuthValue } from '../../context/AuthContext';
 import { UseAuthentication } from '../../hooks/useAuthentication';
 import { useUserInfo } from '../../hooks/userName';
-import { Header, Logo, Nav, NavLinkStyled } from './styled.js';
+import { ContainerMaxWidth, Header, Logo, Nav, NavLinkStyled } from './styled.js';
 
 const Index = () => {
   const { user } = UseAuthValue();
@@ -14,81 +14,78 @@ const Index = () => {
 
   return (
     <Header>
-      <div>
-        <NavLink to='/'>
-          <Logo src={logo} alt='logo' />
-        </NavLink>
-        {user && <span>/{userName}</span>}
-      </div>
-      <Nav>
-        {!user && (
-          <>
-            <NavLinkStyled
-              aria-label='Catálogo de postagens'
-              to='/catalog'
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              Catalog
+      <ContainerMaxWidth>
+        <div>
+          <NavLink to='/'>
+            <Logo src={logo} alt='logo' />
+          </NavLink>
+          {user && <span>/{userName}</span>}
+        </div>
+        <Nav>
+          {!user && (
+            <>
+              <NavLinkStyled
+                aria-label='Catálogo de postagens'
+                to='/catalog'
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Catalog
+              </NavLinkStyled>
+              <NavLinkStyled
+                aria-label='pagina para efetuar o login'
+                to='/login'
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Entrar
+              </NavLinkStyled>
+              <NavLinkStyled
+                to='/register'
+                aria-label='pagina de cadastro'
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Cadastro
+              </NavLinkStyled>
+            </>
+          )}
+          {user && (
+            <>
+              <NavLinkStyled
+                aria-label='home'
+                to='/'
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Home
+              </NavLinkStyled>
+              <NavLinkStyled
+                aria-label='Catálogo de postagens'
+                to='/catalog'
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Catalog
+              </NavLinkStyled>
+              <NavLinkStyled
+                aria-label='novo post'
+                to='/create-post'
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Novo Post
+              </NavLinkStyled>
+              <NavLinkStyled
+                aria-label='painel principal'
+                to='/dashboard'
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Dashboard
+              </NavLinkStyled>
+            </>
+          )}
+          {user && (
+            <NavLinkStyled aria-label='desconectar' onClick={logout} className={() => 'Lo'}>
+              <MdLogout />
             </NavLinkStyled>
-            <NavLinkStyled
-              aria-label='pagina para efetuar o login'
-              to='/login'
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              Entrar
-            </NavLinkStyled>
-
-            <NavLinkStyled
-              to='/register'
-              aria-label='pagina de cadastro'
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              Cadastro
-            </NavLinkStyled>
-          </>
-        )}
-        {user && (
-          <>
-            <NavLinkStyled
-              aria-label='home'
-              to='/'
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              Home
-            </NavLinkStyled>
-
-            <NavLinkStyled
-              aria-label='Catálogo de postagens'
-              to='/catalog'
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              Catalog
-            </NavLinkStyled>
-
-            <NavLinkStyled
-              aria-label='novo post'
-              to='/create-post'
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              Novo Post
-            </NavLinkStyled>
-
-            <NavLinkStyled
-              aria-label='painel principal'
-              to='/dashboard'
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              Dashboard
-            </NavLinkStyled>
-          </>
-        )}
-
-        {user && (
-          <NavLinkStyled aria-label='desconectar' onClick={logout} className={() => 'Lo'}>
-            <MdLogout />
-          </NavLinkStyled>
-        )}
-      </Nav>
+          )}
+        </Nav>
+      </ContainerMaxWidth>
     </Header>
   );
 };

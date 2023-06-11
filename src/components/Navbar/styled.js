@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { MaxWidth } from '../../styles/styledGlobal';
 // import { theme } from '../../theme';
 
 export const Header = styled.header`
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 10px 0px;
   justify-content: space-between;
-  align-items: center;
   height: 7rem;
   padding: 0.5rem 2rem;
   width: 100%;
@@ -57,6 +57,13 @@ export const NavLinkStyled = styled(NavLink)`
     color: ${({ theme }) => theme.color.firstHover};
     background-color: ${({ theme }) => theme.color.first5Alpha};
   }
+`;
+
+export const ContainerMaxWidth = styled.div`
+  ${MaxWidth}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 

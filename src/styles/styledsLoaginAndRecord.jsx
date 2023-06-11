@@ -42,7 +42,7 @@ export const ButtonForm = styled.button`
   border: none;
   padding: 10px 15px;
   font-size: 1.6rem;
-  transition: 0.8s;
+  transition: 300ms color, 300ms background-color;
 
   &:hover {
     background-color: hsl(198, 97%, 17%);

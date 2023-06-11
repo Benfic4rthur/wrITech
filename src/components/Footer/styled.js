@@ -1,14 +1,11 @@
 import styled from 'styled-components';
+import { MaxWidth } from '../../styles/styledGlobal';
 
 export const Footer = styled.footer`
   height: 150px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
   color: black;
   width: 100%;
-  padding-inline: 5%;
+  padding: 0.5rem 2rem;
   background-color: ${({ theme }) => theme.color.first5Alpha};
 `;
 export const Description = styled.p`
@@ -18,4 +15,14 @@ export const Description = styled.p`
 `;
 export const ImgFooter = styled.img`
   width: 100px;
+`;
+
+
+export const ContainerMaxWidth = styled.div`
+  ${MaxWidth}
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
 `;

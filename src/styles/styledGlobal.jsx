@@ -23,13 +23,19 @@ export const ContainerHidden = styled.div`
   grid-template-rows: min-content auto min-content;
 `;
 
-export const MaxWidth = styled.main`
+export const MaxWidth = css`
   margin: 0 auto;
   height: 100%;
   width: min(100%, 141rem);
-  padding-block: 4rem;
-  padding-inline: min(7vw, 8rem);
+
 `;
+
+export const Main = styled.main`
+  ${MaxWidth}
+  padding-block: 4rem;
+  padding-inline: min(5vw, 4rem);
+`;
+
 export const ContainerCenter = styled.div`
   height: 100%;
   width: 100%;
@@ -51,12 +57,56 @@ export const CreatePostButton = styled.a`
   justify-content: center;
   gap: 1rem;
   align-items: center;
+  transition: 300ms color, 300ms background-color;
 
   &:hover {
     color: ${({ theme }) => theme.color.firstHover};
     background-color: ${({ theme }) => theme.color.third};
   }
 `;
+
+
+export const SearchForm = styled.form`
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 6rem;
+  border-radius: ${({ theme }) => theme.border.radius};
+`;
+export const SearchInput = styled.input`
+  min-width: 100%;
+  border-bottom-left-radius: ${({ theme }) => theme.border.radius};
+  border-top-left-radius: ${({ theme }) => theme.border.radius};
+  padding: 1.8rem 1.8rem 1.8rem 2.3rem;
+  background-color: ${({ theme }) => theme.color.fourth};
+`;
+
+export const SearchButton = styled.button`
+  font-size: ${({ theme }) => theme.font.size.lg};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-bottom-right-radius: ${({ theme }) => theme.border.radius};
+  border-top-right-radius: ${({ theme }) => theme.border.radius};
+  background-color: ${({ theme }) => theme.color.fifth};
+  color: ${({ theme }) => theme.color.fourth};
+`;
+
+export const PostsNotFoundContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+`;
+
+export const PostsNotFoundTitle = styled.h3`
+  font-size: ${({ theme }) => theme.font.size.lg};
+  color: ${({ theme }) => theme.color.thirdBg};
+`;
+
+
 
 // --------------------- //
 
