@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const ContainerPost = styled.article`
+export const ContainerPost = styled.a`
   height: fit-content;
   width: min(100%, 36rem);
   padding: 3rem 2rem;
@@ -9,6 +9,13 @@ export const ContainerPost = styled.article`
   gap: 0.7rem;
   border-radius: ${({ theme }) => theme.border.radius};
   background-color: ${({ theme }) => theme.color.thirdOpacity03};
+  box-shadow: 2px 2px 5px ${({ theme }) => theme.color.shadow};
+  transition: 300ms background-color;
+  text-decoration: none;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.first5Alpha};
+  }
 `;
 
 const MidiaStyled = css`

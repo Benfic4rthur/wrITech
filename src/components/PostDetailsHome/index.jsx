@@ -1,22 +1,30 @@
 import { Link } from 'react-router-dom';
-import { Author, ContainerMidia, ContainerPost, ContainerTag, Image, Tag, Title, Video } from './styled';
+import {
+  Author,
+  ContainerMidia,
+  ContainerPost,
+  ContainerTag,
+  Image,
+  Tag,
+  Title,
+  Video,
+} from './styled';
 
 const index = ({ post }) => {
   const { title, createdBy, tags, mediaURL, id } = post;
 
   return (
-    <ContainerPost>
-      <Link to={`/posts/${id}`}>
-        {mediaURL && (mediaURL.includes('.mp4') || mediaURL.includes('.webm')) ? (
-          <ContainerMidia>
-            <Video src={mediaURL} alt={title} />
-          </ContainerMidia>
-        ) : (
-          <ContainerMidia>
-            <Image src={mediaURL} alt={title} />
-          </ContainerMidia>
-        )}
-      </Link>
+    <ContainerPost as={Link} to={`/posts/${id}`}>
+      {mediaURL && (mediaURL.includes('.mp4') || mediaURL.includes('.webm')) ? (
+        <ContainerMidia>
+          <Video src={mediaURL} alt={title} />
+        </ContainerMidia>
+      ) : (
+        <ContainerMidia>
+          <Image src={mediaURL} alt={title} />
+        </ContainerMidia>
+      )}
+
       <Title>{title}</Title>
       <Author>Autor: {createdBy}</Author>
       <ContainerTag>

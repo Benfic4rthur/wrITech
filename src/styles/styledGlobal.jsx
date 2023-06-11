@@ -51,6 +51,7 @@ export const CreatePostButton = styled.a`
   text-decoration: none;
   font-size: ${({ theme }) => theme.font.size.base};
   border-radius: ${({ theme }) => theme.border.radius};
+  box-shadow: 2px 2px 5px ${({ theme }) => theme.color.shadow};
   padding: 1.5rem 3rem;
   transition: 300ms;
   display: flex;
@@ -72,6 +73,7 @@ export const SearchForm = styled.form`
   margin: 0 auto;
   display: grid;
   grid-template-columns: auto 6rem;
+  box-shadow: 2px 2px 5px ${({ theme }) => theme.color.shadow};
   border-radius: ${({ theme }) => theme.border.radius};
 `;
 export const SearchInput = styled.input`
@@ -88,6 +90,7 @@ export const SearchButton = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
   border-bottom-right-radius: ${({ theme }) => theme.border.radius};
   border-top-right-radius: ${({ theme }) => theme.border.radius};
   background-color: ${({ theme }) => theme.color.fifth};

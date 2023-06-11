@@ -13,6 +13,7 @@ export const Container = styled.a`
   padding: 1.5rem;
   padding-bottom: 1rem;
   border-radius: ${({ theme }) => theme.border.radius};
+  box-shadow: 2px 2px 5px ${({ theme }) => theme.color.shadow};
   text-decoration: none;
   transition: 300ms background-color, 300ms color, 300ms text-decoration;
 

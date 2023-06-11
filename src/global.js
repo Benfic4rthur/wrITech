@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 // import { containerStyleBody } from './styles/styledGlobal';
 
 export const GlobalStyle = createGlobalStyle`
-   *{
+   * {
       margin:0;
       border: none;
       padding:0;
@@ -19,13 +19,9 @@ export const GlobalStyle = createGlobalStyle`
       width: 100%;
       min-height: 100vh;
       height: 100%;
+      background-color:  ${({ theme }) => theme.color.fourthBg};
    }
    body {
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-color:  ${({ theme }) => theme.color.fourthBg};
-      padding: 0;
-      margin: 0;
       width: 100%;
       font-family: ${({ theme }) => theme.font.family.roboto};
       min-height: 100vh;

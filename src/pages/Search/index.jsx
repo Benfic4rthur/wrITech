@@ -1,4 +1,4 @@
-import styles from "./style.module.css";
+// import styles from "./style.module.css";
 // hooks
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useQuery } from "../../hooks/useQuery";

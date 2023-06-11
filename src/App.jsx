@@ -1,26 +1,25 @@
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 //hooks
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { UseAuthentication } from './hooks/useAuthentication';
 //pages
-import Home from './pages/Home';
 import About from './pages/About';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import CreatePost from './pages/CreatePost';
-import Search from './pages/Search';
-import Post from './pages/Post';
 import Catalog from './pages/Catalog';
+import CreatePost from './pages/CreatePost';
+import Dashboard from './pages/Dashboard';
 import EditPost from './pages/EditPost';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Post from './pages/Post';
+import Register from './pages/Register';
+import Search from './pages/Search';
 //components
-import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 //context
 import { AuthProvider } from './context/AuthContext';
 //firebase
 import { onAuthStateChanged } from 'firebase/auth';
-import { GlobalStyle } from './global.js';
 import { ContainerHidden, Main } from './styles/styledGlobal';
 
 function App() {
@@ -41,7 +40,6 @@ function App() {
 
   return (
     <>
-      <GlobalStyle />
       <AuthProvider value={{ user }}>
         <BrowserRouter>
           <ContainerHidden>

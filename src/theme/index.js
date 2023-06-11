@@ -4,6 +4,7 @@ export const theme = {
     firstHover: 'hsl(59, 50%, 56%)',
     firstBg: '#1C1B1E',
     first5Alpha: 'hsl(260, 10%, 12%, 0.3)',
+    shadow: 'hsl(260, 10%, 12%, 0.15)',
 
     second: 'hsl(254, 5%, 15%)',
     secondBg: 'hsl(254, 5%, 55%)',

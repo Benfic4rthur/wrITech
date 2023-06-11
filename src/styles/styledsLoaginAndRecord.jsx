@@ -16,6 +16,8 @@ export const ContainerForm = styled.section`
   width: min(100%, 36rem);
   display: flex;
   padding: 3rem 2rem min(15vh, 4rem);
+  box-shadow: 2px 2px 5px ${({ theme }) => theme.color.shadow};
+
   margin: 0 auto;
   justify-content: center;
   flex-direction: column;
