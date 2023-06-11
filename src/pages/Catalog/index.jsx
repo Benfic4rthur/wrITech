@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { LuPlus, LuSearch } from 'react-icons/lu';
 import { Link, useNavigate } from 'react-router-dom';
-import { useFetchDocuments } from '../../hooks/useFetchDocuments';
 import PostDetails from '../../components/PostDetails';
-import styles from './style.module.css';
+import { useFetchDocuments } from '../../hooks/useFetchDocuments';
+import { CreatePostButton, PostsNotFoundContainer, PostsNotFoundTitle, SearchButton, SearchForm, SearchInput } from '../../styles/styledGlobal';
+import { CreatePostTitle } from '../Dashboard/styled';
+import { Container } from './styled';
+import { ContainerHome } from '../Home/styled';
 
 const Index = () => {
   const [query, setQuery] = useState('');
   const { documents: posts, loading } = useFetchDocuments('posts');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     if (query) {
       return navigate(`/search?q=${query}`);
@@ -17,32 +21,32 @@ const Index = () => {
   };
 
   return (
-    <div className={styles.home}>
-      <h1>Catalogo de postagens</h1>
-      <form onSubmit={handleSubmit} className={styles.search_form}>
-        <input
-          type="text"
-          placeholder="Ou busque por tags..."
-          onChange={(e) => setQuery(e.target.value)}
+    <ContainerHome>
+      <SearchForm onSubmit={handleSubmit}>
+        <SearchInput
+          type='text'
+          aria-label='Digite aqui para pesquisar posts'
+          placeholder='Digite aqui para pesquisar'
+          onChange={e => setQuery(e.target.value)}
         />
-        <button className="btn btn-dark">Pesquisar</button>
-      </form>
-      <div>
+        <SearchButton aria-label='Realizar busca'>
+          <LuSearch />
+        </SearchButton>
+      </SearchForm>
+      <CreatePostTitle>Catalogo de postagens</CreatePostTitle>
+      <Container>
         {loading && <p>Carregando...</p>}
-        {posts &&
-          posts.map((post) => (
-            <PostDetails key={post.id} post={post} />
-          ))}
+        {posts && posts.map(post => <PostDetails key={post.id} post={post} />)}
         {posts && posts.length === 0 && (
-          <div className={styles.noposts}>
-            <p>Não existem postagens!</p>
-            <Link to="/create-post" className="btn btn-dark">
-              Crie uma postagem!
-            </Link>
-          </div>
+          <PostsNotFoundContainer>
+            <PostsNotFoundTitle>Nenhum post encontrado.</PostsNotFoundTitle>
+            <CreatePostButton as={Link} to='/create-post'>
+              Criar postagem <LuPlus size={17} />
+            </CreatePostButton>
+          </PostsNotFoundContainer>
         )}
-      </div>
-    </div>
+      </Container>
+    </ContainerHome>
   );
 };
 

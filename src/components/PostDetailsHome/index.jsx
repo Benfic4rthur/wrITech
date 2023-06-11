@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Author, ContainerPost, ContainerTag, Image, Tag, Title, Video } from './styled';
+import { Author, ContainerMidia, ContainerPost, ContainerTag, Image, Tag, Title, Video } from './styled';
 
 const index = ({ post }) => {
   const { title, createdBy, tags, mediaURL, id } = post;
@@ -8,13 +8,17 @@ const index = ({ post }) => {
     <ContainerPost>
       <Link to={`/posts/${id}`}>
         {mediaURL && (mediaURL.includes('.mp4') || mediaURL.includes('.webm')) ? (
-          <Video src={mediaURL} alt={title} />
+          <ContainerMidia>
+            <Video src={mediaURL} alt={title} />
+          </ContainerMidia>
         ) : (
-          <Image src={mediaURL} alt={title} />
+          <ContainerMidia>
+            <Image src={mediaURL} alt={title} />
+          </ContainerMidia>
         )}
       </Link>
       <Title>{title}</Title>
-      <Author >Autor: {createdBy}</Author>
+      <Author>Autor: {createdBy}</Author>
       <ContainerTag>
         {tags.map(tag => (
           <Tag key={tag}>{tag}</Tag>

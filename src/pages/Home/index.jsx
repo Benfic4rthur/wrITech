@@ -4,17 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useFetchDocuments } from '../../hooks/useFetchDocuments';
 
 //components
-import { LuSearch } from 'react-icons/lu';
+import { LuPlus, LuSearch } from 'react-icons/lu';
 import PostDetailsHome from '../../components/PostDetailsHome';
-import { CreatePostButton } from '../../styles/styledGlobal';
+import { CreatePostButton, PostsNotFoundContainer, PostsNotFoundTitle, SearchButton, SearchForm, SearchInput } from '../../styles/styledGlobal';
 import {
   ContainerHome,
   PostsContainer,
-  PostsNotFoundContainer,
-  PostsNotFoundTitle,
-  SearchButton,
-  SearchForm,
-  SearchInput,
 } from './styled';
 
 const Index = () => {
@@ -42,22 +37,20 @@ const Index = () => {
           <LuSearch />
         </SearchButton>
       </SearchForm>
-      <div>
-        <h2>Veja todas as postagens mais recentes</h2>
 
+        <h2>Veja todas as postagens mais recentes</h2>
         {loading && <p>Carregando...</p>}
         <PostsContainer>
           {posts && posts.map(post => <PostDetailsHome key={post.id} post={post} />)}
           {posts && posts.length === 0 && (
             <PostsNotFoundContainer>
               <PostsNotFoundTitle>Nenhum post encontrado.</PostsNotFoundTitle>
-              <CreatePostButton as={Link} to='/create-post' className='btn btn-dark'>
-                Crie uma postagem!
+              <CreatePostButton as={Link} to='/create-post'>
+                Criar postagem <LuPlus size={17}/>
               </CreatePostButton>
             </PostsNotFoundContainer>
           )}
         </PostsContainer>
-      </div>
     </ContainerHome>
   );
 };

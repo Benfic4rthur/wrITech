@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-import { theme } from '../../theme';
 
 export const ContainerCreatePost = styled.div`
   gap: 1rem;
@@ -20,9 +19,9 @@ export const ContainerPost = styled.section`
   height: 100%;
   flex-direction: column;
   gap: 1.5rem;
-  background-color: ${theme.color.thirdOpacity03};
+  background-color: ${({theme})=>theme.color.thirdOpacity03};
   padding: 1.5rem 1rem;
-  border-radius: ${theme.border.radius};
+  border-radius: ${({theme})=>theme.border.radius};
 `;
 
 export const Post = styled.div`
@@ -32,38 +31,37 @@ export const Post = styled.div`
   align-items: center;
   padding-inline: 2.5rem;
   padding-block: 1.5rem;
-  background-color: ${theme.color.first5Alpha};
-  border-radius: ${theme.border.radius};
+  background-color: ${({theme})=>theme.color.first5Alpha};
+  border-radius: ${({theme})=>theme.border.radius};
 `;
 
 export const TitlePost = styled.h3`
-  font-family: ${theme.font.family.roboto};
+  font-family: ${({theme})=>theme.font.family.roboto};
   font-weight: 500;
-  color: ${theme.color.fourth};
-  font-size: ${theme.font.size.base};
+  color: ${({theme})=>theme.color.fourth};
+  font-size: ${({theme})=>theme.font.size.base};
 `;
 
 export const ButtonEvent = styled.button`
   display: flex;
-  background-color: ${theme.color.third};
-  font-size: ${theme.font.size.base};
-  color: ${theme.color.fourth};
+  background-color: ${({theme})=>theme.color.third};
+  font-size: ${({theme})=>theme.font.size.base};
+  color: ${({theme})=>theme.color.fourth};
   width: 3rem;
   height: 3rem;
   justify-content: center;
   align-items: center;
-  border-radius: ${theme.border.radius};
+  border-radius: ${({theme})=>theme.border.radius};
   cursor: pointer;
-  transition: 300ms;
-
+  transition: 300ms color, 300ms background-color;
   &:hover {
-    color: ${theme.color.first};
-    background-color: ${theme.color.firstBg};
+    color: ${({theme})=>theme.color.first};
+    background-color: ${({theme})=>theme.color.firstBg};
   }
 
   &.delete:hover {
-    background-color: ${theme.color.firstBg};
-    color: ${theme.color.error};
+    color: ${({theme})=>theme.color.error};
+    background-color: ${({theme})=>theme.color.firstBg};
   }
 `;
 

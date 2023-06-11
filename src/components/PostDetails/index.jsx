@@ -1,5 +1,5 @@
-import styles from './style.module.css';
 import { Link } from 'react-router-dom';
+import { Container, ContainerMidia, Image, Title, Video } from './styled';
 
 const Index = ({ post }) => {
   const limiteCaracteres = 200;
@@ -14,19 +14,19 @@ const Index = ({ post }) => {
       : post.title;
 
   return (
-    <div className={styles.postContainer}>
-      <Link to={`/posts/${post.id}`} className={styles.postLink}>
-        <div className={styles.postBox}>
-          {post.mediaURL && (post.mediaURL.includes('.mp4') || post.mediaURL.includes('.webm')) ? (
-            // eslint-disable-next-line jsx-a11y/media-has-caption
-            <video src={post.mediaURL} alt={post.title} title={body}/>
-          ) : (
-            <img src={post.mediaURL} alt={post.title} title={body}/>
-          )}
-          <h2 className={styles.title}>{title}</h2>
-        </div>
-      </Link>
-    </div>
+    <Container as={Link} to={`/posts/${post.id}`}>
+      {post.mediaURL && (post.mediaURL.includes('.mp4') || post.mediaURL.includes('.webm')) ? (
+        // eslint-disable-next-line jsx-a11y/media-has-caption
+        <ContainerMidia>
+          <Video src={post.mediaURL} alt={post.title} title={body} />
+        </ContainerMidia>
+      ) : (
+        <ContainerMidia>
+          <Image src={post.mediaURL} alt={post.title} title={body} />
+        </ContainerMidia>
+      )}
+      <Title >{title}</Title>
+    </Container>
   );
 };
 

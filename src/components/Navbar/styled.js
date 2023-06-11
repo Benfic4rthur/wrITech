@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { MaxWidth } from '../../styles/styledGlobal';
-// import { theme } from '../../theme';
 
 export const Header = styled.header`
   display: flex;

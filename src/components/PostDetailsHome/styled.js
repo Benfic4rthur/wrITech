@@ -1,33 +1,45 @@
-import { styled } from 'styled-components';
-import { theme } from '../../theme';
+import styled, { css } from 'styled-components';
 
 export const ContainerPost = styled.article`
   height: fit-content;
   width: min(100%, 36rem);
   padding: 3rem 2rem;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: .7rem;
+  gap: 0.7rem;
   border-radius: ${({ theme }) => theme.border.radius};
   background-color: ${({ theme }) => theme.color.thirdOpacity03};
 `;
 
-export const Image = styled.img`
+const MidiaStyled = css`
   width: 100%;
+  height: 18rem;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: ${({ theme }) => theme.border.radius};
+`;
+
+export const ContainerMidia = styled.div`
+  background-color: ${({ theme }) => theme.color.first5Alpha};
+  ${MidiaStyled}
+`;
+
+export const Image = styled.img`
+  ${MidiaStyled}
 `;
 
 export const Video = styled.video`
-  width: 100%;
+  ${MidiaStyled}
 `;
 
 export const Tag = styled.div`
   padding: 0.6rem 1.2rem;
   width: fit-content;
   font-size: 1.1rem;
-  color: ${theme.color.thirdBg};
-  border-radius: ${theme.border.radius};
-  background-color: ${theme.color.first5Alpha};
+  color: ${({theme})=>theme.color.thirdBg};
+  border-radius: ${({theme})=>theme.border.radius};
+  background-color: ${({theme})=>theme.color.first5Alpha};
 `;
 
 export const ContainerTag = styled.div`
@@ -38,10 +50,10 @@ export const ContainerTag = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: ${theme.font.size.base};
-  color: ${theme.color.thirdBg};
+  font-size: ${({theme})=>theme.font.size.base};
+  color: ${({theme})=>theme.color.thirdBg};
 `;
 export const Author = styled.h3`
-  font-size: ${theme.font.size.xs};
-  color: ${theme.color.thirdBg};
+  font-size: ${({theme})=>theme.font.size.xs};
+  color: ${({theme})=>theme.color.thirdBg};
 `;

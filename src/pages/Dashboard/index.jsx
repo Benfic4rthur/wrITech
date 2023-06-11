@@ -28,11 +28,11 @@ const Dashboard = () => {
     <div>
       <ContainerHeader>
         <Subtitle>Gerencie os seus posts</Subtitle>
-        <CreatePostButton as={Link} to='/create-post' className='btn btn-dark'>
-          Criar Post <LuPlus size={17}/>
+        <CreatePostButton as={Link} to='/create-post'>
+          Criar Post <LuPlus size={17} />
         </CreatePostButton>
       </ContainerHeader>
-      {posts?.length == 0 && (
+      {posts && posts.length == 0 && (
         <ContainerCreatePost>
           <CreatePostTitle>Não foram encontrados posts</CreatePostTitle>
         </ContainerCreatePost>
