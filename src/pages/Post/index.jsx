@@ -3,37 +3,63 @@
 // hooks
 import { useParams } from 'react-router-dom';
 import { useFetchDocument } from '../../hooks/useFetchDocument';
+import { Author, Body, Container, ContainerTag, ImageStyled, Midia, Tag, Title, Video } from './styled';
+
+import { useEffect, useState } from 'react';
+
+const ImageContainer = ({ src, alt }) => {
+  const [orientation, setOrientation] = useState('');
+
+  useEffect(() => {
+    const image = new Image();
+    image.src = src;
+    image.onload = () => {
+      const aspectRatio = image.naturalWidth / image.naturalHeight;
+      if (aspectRatio > 1) {
+        setOrientation('landscape');
+      } else {
+        setOrientation('portrait');
+      }
+    };
+  }, [src]);
+
+  return (
+    <Midia>
+      <ImageStyled src={src} alt={alt} className={`${orientation}`} />
+    </Midia>
+  );
+};
 
 const Post = () => {
   const { id } = useParams();
   const { document: post } = useFetchDocument('posts', id);
-  // .mp4, .m4v, .mov .avi 	.mpg  .mpeg .wmv
 
   return (
-    <div>
+    <Container>
       {post && (
         <>
-          <h1>{post.title}</h1>
-          {post.mediaURL && (post.mediaURL.includes('.mp4') || post.mediaURL.includes('.webm')) ? (
-            <video src={post.mediaURL} alt={post.title} controls />
-          ) : (
-            <img src={post.mediaURL} alt={post.title} />
+          {post.mediaURL &&
+            (post.mediaURL.includes('.mp4') || post.mediaURL.includes('.webm') ? (
+              <Video controls src={post.mediaURL} alt={post.title} />
+            ) : (
+              <ImageContainer src={post.mediaURL} alt={post.title} />
+            ))}
+
+          <Title>{post.title}</Title>
+          {post?.tags?.length > 0 && (
+            <ContainerTag>
+              {post.tags.map(tag => (
+                <Tag key={tag}>{tag}</Tag>
+              ))}
+            </ContainerTag>
           )}
 
-          <p >{post.body}</p>
-          <h3>tags da postagem:</h3>
-          <div >
-            {post.tags.map(tag => (
-              <p key={tag}>
-                <span>#</span>
-                {tag}
-              </p>
-            ))}
-          </div>
-          <p >{post.createdBy}</p>
+          <Body>{post.body}</Body>
+
+          <Author>Escrito por: {post.createdBy}</Author>
         </>
       )}
-    </div>
+    </Container>
   );
 };
 
