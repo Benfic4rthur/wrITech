@@ -6,16 +6,17 @@ export const Header = styled.header`
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 10px 0px;
   justify-content: space-between;
-  height: 7rem;
+  /* height: 7rem; */
   padding: 0.5rem 2rem;
   width: 100%;
   background-color: ${({ theme }) => theme.color.fifth};
+`;
 
-  div {
-    display: flex;
-    align-items: center;
-  }
-  span {
+export const ContainerLink = styled.div`
+  display: flex;
+  align-items: center;
+    
+  & > span {
     color: ${({ theme }) => theme.color.third};
     font-weight: 600;
     font-size: 1.5rem;
@@ -25,10 +26,11 @@ export const Header = styled.header`
 `;
 
 export const Nav = styled.nav`
-  height: min-content;
+  height: fit-content;
   width: fit-content;
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 `;
@@ -52,7 +54,8 @@ export const NavLinkStyled = styled(NavLink)`
     color: ${({ theme }) => theme.color.first};
   }
 
-  &.active:hover, &:hover {
+  &.active:hover,
+  &:hover {
     color: ${({ theme }) => theme.color.firstHover};
     background-color: ${({ theme }) => theme.color.first5Alpha};
   }
@@ -64,9 +67,6 @@ export const ContainerMaxWidth = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-
-
-
 
 /* .navbar {
 

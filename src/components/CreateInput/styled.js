@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const InputStyled = styled.input`
-  min-width: 100%;
+  width: 100%;
   height: 5.2rem;
   outline: none;
   background-color: ${({ theme }) => theme.color.secondBg};

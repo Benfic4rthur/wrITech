@@ -4,7 +4,7 @@ import { MaxWidth } from '../../styles/styledGlobal';
 export const Footer = styled.footer`
   height: 150px;
   color: black;
-  width: 100%;
+  min-width: 100%;
   padding: 0.5rem 2rem;
   background-color: ${({ theme }) => theme.color.first5Alpha};
 `;

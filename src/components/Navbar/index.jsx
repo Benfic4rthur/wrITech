@@ -4,7 +4,7 @@ import logo from '../../assets/writech.png';
 import { UseAuthValue } from '../../context/AuthContext';
 import { UseAuthentication } from '../../hooks/useAuthentication';
 import { useUserInfo } from '../../hooks/userName';
-import { ContainerMaxWidth, Header, Logo, Nav, NavLinkStyled } from './styled.js';
+import { ContainerLink, ContainerMaxWidth, Header, Logo, Nav, NavLinkStyled } from './styled.js';
 
 const Index = () => {
   const { user } = UseAuthValue();
@@ -15,12 +15,10 @@ const Index = () => {
   return (
     <Header>
       <ContainerMaxWidth>
-        <div>
-          <NavLink to='/'>
-            <Logo src={logo} alt='logo' />
-          </NavLink>
+        <ContainerLink as={NavLink} NavLink to='/'>
+          <Logo src={logo} alt='logo' />
           {user && <span>/{userName}</span>}
-        </div>
+        </ContainerLink>
         <Nav>
           {!user && (
             <>
@@ -77,12 +75,10 @@ const Index = () => {
               >
                 Dashboard
               </NavLinkStyled>
+              <NavLinkStyled aria-label='desconectar' onClick={logout} className={() => 'Lo'}>
+                <MdLogout />
+              </NavLinkStyled>
             </>
-          )}
-          {user && (
-            <NavLinkStyled aria-label='desconectar' onClick={logout} className={() => 'Lo'}>
-              <MdLogout />
-            </NavLinkStyled>
           )}
         </Nav>
       </ContainerMaxWidth>
