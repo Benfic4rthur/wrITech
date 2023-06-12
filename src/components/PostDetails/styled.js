@@ -10,7 +10,7 @@ export const Container = styled.a`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  width: 20rem;
+  width: 15rem;
   padding: 1.5rem;
   padding-bottom: 1rem;
   border-radius: ${({ theme }) => theme.border.radius};
@@ -27,8 +27,8 @@ export const Container = styled.a`
 `;
 
 const MidiaStyled = css`
-  width: 14rem;
-  height: 14rem;
+  width: 12rem;
+  height: 12rem;
   object-fit: cover;
   border-radius: ${({theme})=>theme.border.radius};
   overflow: hidden;
