@@ -48,8 +48,8 @@ const Post = () => {
           <Title>{post.title}</Title>
           {post?.tags?.length > 0 && (
             <ContainerTag>
-              {post.tags.map(tag => (
-                <Tag key={tag}>{tag}</Tag>
+              {post.tags.map((tag, i) => (
+                <Tag key={`${tag}${i}`}>{tag}</Tag>
               ))}
             </ContainerTag>
           )}

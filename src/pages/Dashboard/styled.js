@@ -17,6 +17,7 @@ export const CreatePostTitle = styled.h2`
 export const ContainerPost = styled.section`
   display: flex;
   height: 100%;
+  width: 100%;
   flex-direction: column;
   gap: 1.5rem;
   box-shadow: 2px 2px 5px ${({ theme }) => theme.color.shadow};
@@ -26,9 +27,11 @@ export const ContainerPost = styled.section`
 `;
 
 export const Post = styled.div`
-  display: flex;
+  display: grid;
   height: 6rem;
-  justify-content: space-between;
+  width: 100%;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
   align-items: center;
   padding-inline: 2.5rem;
   padding-block: 1.5rem;
@@ -42,6 +45,10 @@ export const TitlePost = styled.h3`
   font-weight: 500;
   color: ${({ theme }) => theme.color.fourth};
   font-size: ${({ theme }) => theme.font.size.base};
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const ButtonEvent = styled.button`
@@ -71,7 +78,7 @@ export const ButtonEvent = styled.button`
 export const ContainerButtonEvent = styled.section`
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 0.5rem;
 `;
 
 export const ContainerHeader = styled.section`

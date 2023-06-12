@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const ContainerHome = styled.div`
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 3rem;
 `;
 

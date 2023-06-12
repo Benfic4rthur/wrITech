@@ -42,7 +42,9 @@ const Dashboard = () => {
         <ContainerPost>
           {posts.map(post => (
             <Post key={post.id}>
-              <TitlePost>Título: {post.title}</TitlePost>
+              <TitlePost aria-label={`Título: ${post.title}`} title={`Título: ${post.title}`}>
+                Título: {post.title}
+              </TitlePost>
               <ContainerButtonEvent>
                 <ButtonEvent as={Link} to={`/posts/${post.id}`}>
                   <LuEye />

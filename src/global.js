@@ -19,10 +19,12 @@ export const GlobalStyle = createGlobalStyle`
       width: 100%;
       min-height: 100vh;
       height: 100%;
+      width: 100%;
       background-color:  ${({ theme }) => theme.color.fourthBg};
    }
    body {
       width: 100%;
+      max-width: 100vw;
       font-family: ${({ theme }) => theme.font.family.roboto};
       min-height: 100vh;
       height: 100%;

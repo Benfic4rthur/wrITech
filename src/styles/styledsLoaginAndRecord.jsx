@@ -13,7 +13,8 @@ export const InputError = styled.label`
 
 export const ContainerForm = styled.section`
   height: fit-content;
-  width: min(100%, 36rem);
+  width: 100%;
+  max-width: 36rem;
   display: flex;
   padding: 3rem 2rem min(15vh, 4rem);
   box-shadow: 2px 2px 5px ${({ theme }) => theme.color.shadow};
