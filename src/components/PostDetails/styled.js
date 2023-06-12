@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.a`
   height: fit-content;
-  width: fit-content;
+  width: 12rem; /* Adjusted width to fit 8 posts per line */
   background-color: ${({ theme }) => theme.color.thirdOpacity03};
   color: ${({ theme }) => theme.color.thirdBg};
   display: flex;
@@ -10,7 +10,7 @@ export const Container = styled.a`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  width: 15rem;
+  width: 14.8rem;
   padding: 1.5rem;
   padding-bottom: 1rem;
   border-radius: ${({ theme }) => theme.border.radius};
@@ -47,7 +47,7 @@ export const Video = styled.video`
 `;
 
 export const Title = styled.h2`
-  font-size: ${({ theme }) => theme.font.size.base};
+  font-size: ${({ theme }) => theme.font.size.h2};
   padding: 0.5rem;
   width: 100%;
   white-space: nowrap;

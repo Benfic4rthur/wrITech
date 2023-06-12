@@ -54,6 +54,7 @@ export const Tag = styled.div`
   color: ${({ theme }) => theme.color.thirdBg};
   border-radius: ${({ theme }) => theme.border.radius};
   background-color: ${({ theme }) => theme.color.first5Alpha};
+
 `;
 
 export const ContainerTag = styled.div`
