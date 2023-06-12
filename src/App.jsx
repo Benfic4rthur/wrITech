@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Post from './pages/Post';
 import Register from './pages/Register';
 import Search from './pages/Search';
+import ForgotPassword from './pages/ForgotPassword/Index';
 //components
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
@@ -52,6 +53,7 @@ function App() {
                 <Route path='/search' element={<Search />} />
                 <Route path='/posts/:id' element={<Post />} />
                 <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
+                <Route path='/forgot-password' element={!user ? <ForgotPassword /> : <Navigate to='/' />} />
                 <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
                 <Route
                   path='/dashboard'

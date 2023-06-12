@@ -53,8 +53,10 @@ const Index = () => {
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
-          <ButtonForm disabled={loading}>{loading ? ' Aguarde...' : 'Entrar'}</ButtonForm>
+            <ButtonForm disabled={loading}>{loading ? ' Aguarde...' : 'Entrar'}</ButtonForm>
           {error && <Error>{error}</Error>}
+          <h2>Não possui cadastro? <a href="/register" style={{textDecoration: 'none', }}> Cadastre-se!</a></h2>
+          <h4>Esqueceu sua senha? <a href="/forgot-password" style={{textDecoration: 'none'}}> Clique aqui!</a></h4>
         </Form>
       </ContainerForm>
       <div></div>
