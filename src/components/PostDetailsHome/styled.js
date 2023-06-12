@@ -50,6 +50,7 @@ export const Tag = styled.div`
   color: ${({theme})=>theme.color.thirdBg};
   border-radius: ${({theme})=>theme.border.radius};
   background-color: ${({theme})=>theme.color.first5Alpha};
+  height: 27px;
 `;
 
 export const ContainerTag = styled.div`
@@ -57,6 +58,23 @@ export const ContainerTag = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   gap: 0.5rem;
+  overflow-y: scroll;
+  height: 30px;
+  &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: ${({ theme }) => theme.color.thirdBg};
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent
+      };
+      &::-webkit-scrollbar-track:hover {
+        background-color: ${({theme})=>theme.color.first5Alpha}
+      };  
 `;
 
 export const Title = styled.h2`
