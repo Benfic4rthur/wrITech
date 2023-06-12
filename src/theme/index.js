@@ -9,7 +9,7 @@ export const theme = {
     second: 'hsl(254, 5%, 15%)',
     secondBg: 'hsl(254, 5%, 55%)',
 
-    third: 'rgb(43, 43, 43)',
+    third: 'rgb(33, 33, 33)',
     thirdBg: '#0D0C0F',
     thirdOpacity03: 'hsl(25, 5%, 86%, 0.3)',
 

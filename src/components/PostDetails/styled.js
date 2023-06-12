@@ -21,13 +21,14 @@ export const Container = styled.a`
   &:hover {
     background-color: ${({ theme }) => theme.color.first5Alpha};
     color: ${({ theme }) => theme.color.firstHover};
+    transform: scale(1.1);
     /* text-decoration: underline; */
   }
 `;
 
 const MidiaStyled = css`
-  width: 26rem;
-  height: 26rem;
+  width: 14rem;
+  height: 14rem;
   object-fit: cover;
   border-radius: ${({theme})=>theme.border.radius};
   overflow: hidden;
@@ -53,3 +54,4 @@ export const Title = styled.h2`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
+

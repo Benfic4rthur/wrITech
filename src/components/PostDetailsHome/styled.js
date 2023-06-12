@@ -25,6 +25,9 @@ const MidiaStyled = css`
   object-fit: cover;
   object-position: center center;
   border-radius: ${({ theme }) => theme.border.radius};
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 export const ContainerMidia = styled.div`

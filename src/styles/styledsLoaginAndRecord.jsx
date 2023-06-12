@@ -82,9 +82,9 @@ export const Error = styled.p`
 export const Success = styled.p`
   padding: 0.8rem;
   font-size: 1.2rem;
-  color: hsl(126, 97%, 41%);
+  color: green; /*hsl(125.71428571428572, 49.60629921259843%, 50.19607843137255%)*/
   border-radius: 1rem;
-  background-color: hsl(129, 11%, 55%);
+  background-color: hsl(126.81818181818183, 23.157894736842117%, 62.745098039215684%);
 `;
 
 // export const Description = styled.p`

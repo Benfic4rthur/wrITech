@@ -42,7 +42,7 @@ const Dashboard = () => {
         <ContainerPost>
           {posts.map(post => (
             <Post key={post.id}>
-              <TitlePost>Title: {post.title}</TitlePost>
+              <TitlePost>Título: {post.title}</TitlePost>
               <ContainerButtonEvent>
                 <ButtonEvent as={Link} to={`/posts/${post.id}`}>
                   <LuEye />
