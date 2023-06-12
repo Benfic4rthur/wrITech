@@ -29,11 +29,12 @@ const index = ({ post }) => {
         {title}
       </Title>
       <Author>Autor: {createdBy}</Author>
-      <ContainerTag>
-        {tags.map(tag => (
-          <Tag key={tag}>{tag}</Tag>
-        ))}
-      </ContainerTag>
+        <ContainerTag>
+          {tags.map((tag, i) => (
+            <Tag key={`${tag}${i}`}>{tag}</Tag>
+          ))}
+        </ContainerTag>
+
     </ContainerPost>
   );
 };

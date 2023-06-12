@@ -2,10 +2,12 @@ import styled, { css } from 'styled-components';
 
 export const ContainerPost = styled.a`
   height: fit-content;
-  width: min(100%, 36rem);
-  padding: 3rem 2rem;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  max-width: 36rem;
+
+  padding: 3rem 2rem 1.7rem;
+  display: grid;
+  grid-template-columns: 7;
   gap: 0.7rem;
   border-radius: ${({ theme }) => theme.border.radius};
   background-color: ${({ theme }) => theme.color.thirdOpacity03};
@@ -45,18 +47,44 @@ export const Video = styled.video`
 
 export const Tag = styled.div`
   padding: 0.6rem 1.2rem;
+  height: 2.53rem;
   width: fit-content;
   font-size: 1.1rem;
-  color: ${({theme})=>theme.color.thirdBg};
-  border-radius: ${({theme})=>theme.border.radius};
-  background-color: ${({theme})=>theme.color.first5Alpha};
+  white-space: nowrap;
+  color: ${({ theme }) => theme.color.thirdBg};
+  border-radius: ${({ theme }) => theme.border.radius};
+  background-color: ${({ theme }) => theme.color.first5Alpha};
 `;
 
 export const ContainerTag = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  /* flex-wrap: wrap;
+  flex-direction: row; */
+  padding-bottom: 0.5rem;
+  height: 4rem;
+
+  overflow-x: auto;
   gap: 0.5rem;
+
+  /* overflow: overlay; */
+
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.color.first5Alpha};
+    border-radius: ${({ theme }) => theme.border.radius};
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${({ theme }) => theme.color.secondBg};
+  }
 `;
 
 export const Title = styled.h2`
@@ -68,6 +96,6 @@ export const Title = styled.h2`
   text-overflow: ellipsis;
 `;
 export const Author = styled.h3`
-  font-size: ${({theme})=>theme.font.size.xs};
-  color: ${({theme})=>theme.color.thirdBg};
+  font-size: ${({ theme }) => theme.font.size.xs};
+  color: ${({ theme }) => theme.color.thirdBg};
 `;
