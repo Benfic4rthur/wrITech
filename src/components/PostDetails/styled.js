@@ -10,7 +10,7 @@ export const Container = styled.a`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  width: 29rem;
+  width: 20rem;
   padding: 1.5rem;
   padding-bottom: 1rem;
   border-radius: ${({ theme }) => theme.border.radius};
