@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-import { CreatePostButton } from '../../styles/styledGlobal';
 import { theme } from '../../theme';
 
 export const ContainerPost = styled.div`
@@ -24,4 +23,3 @@ export const TextError = styled.p`
   font-size: ${theme.font.size.xs};
 `;
 
-export const ButtonLink = styled(CreatePostButton)``;
