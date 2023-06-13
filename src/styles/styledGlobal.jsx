@@ -70,6 +70,7 @@ export const CreatePostButton = styled.a`
 export const SearchForm = styled.form`
   width: 100%;
   max-width: 40rem;
+  height: fit-content;
   margin: 0 auto;
   display: grid;
   grid-template-columns: auto 6rem;
@@ -95,6 +96,25 @@ export const SearchButton = styled.button`
   border-top-right-radius: ${({ theme }) => theme.border.radius};
   background-color: ${({ theme }) => theme.color.fifth};
   color: ${({ theme }) => theme.color.fourth};
+`;
+
+
+export const ContainerElements = styled.div`
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content min-content auto;
+  gap: 3rem;
+`;
+
+export const ContainerPost = styled.section`
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  justify-content: center;
 `;
 
 export const PostsNotFoundContainer = styled.div`
