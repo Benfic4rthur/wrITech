@@ -15,12 +15,13 @@ export const Header = styled.header`
 export const ContainerLink = styled.div`
   display: flex;
   align-items: center;
+  text-decoration: none;
     
   & > span {
     color: ${({ theme }) => theme.color.third};
     font-weight: 600;
     font-size: 1.5rem;
-    margin-bottom: 1px;
+    margin-bottom: -1px;
     margin-left: -25px;
   }
 `;
