@@ -3,10 +3,9 @@ import { LuPlus, LuSearch } from 'react-icons/lu';
 import { Link, useNavigate } from 'react-router-dom';
 import PostDetails from '../../components/PostDetails';
 import { useFetchDocuments } from '../../hooks/useFetchDocuments';
-import { CreatePostButton, PostsNotFoundContainer, PostsNotFoundTitle, SearchButton, SearchForm, SearchInput } from '../../styles/styledGlobal';
+import { ContainerElements, ContainerPost, CreatePostButton, PostsNotFoundContainer, PostsNotFoundTitle, SearchButton, SearchForm, SearchInput } from '../../styles/styledGlobal';
 import { CreatePostTitle } from '../Dashboard/styled';
-import { Container } from './styled';
-import { ContainerHome } from '../Home/styled';
+
 
 const Index = () => {
   const [query, setQuery] = useState('');
@@ -21,7 +20,7 @@ const Index = () => {
   };
 
   return (
-    <ContainerHome>
+    <ContainerElements>
       <SearchForm onSubmit={handleSubmit}>
         <SearchInput
           type='text'
@@ -34,7 +33,7 @@ const Index = () => {
         </SearchButton>
       </SearchForm>
       <CreatePostTitle>Catalogo de postagens</CreatePostTitle>
-      <Container>
+      <ContainerPost>
         {loading && <p>Carregando...</p>}
         {posts && posts.map(post => <PostDetails key={post.id} post={post} />)}
         {posts && posts.length === 0 && (
@@ -45,8 +44,8 @@ const Index = () => {
             </CreatePostButton>
           </PostsNotFoundContainer>
         )}
-      </Container>
-    </ContainerHome>
+      </ContainerPost>
+    </ContainerElements>
   );
 };
 

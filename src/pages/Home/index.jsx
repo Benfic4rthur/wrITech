@@ -6,11 +6,7 @@ import { useFetchDocuments } from '../../hooks/useFetchDocuments';
 //components
 import { LuPlus, LuSearch } from 'react-icons/lu';
 import PostDetailsHome from '../../components/PostDetailsHome';
-import { CreatePostButton, PostsNotFoundContainer, PostsNotFoundTitle, SearchButton, SearchForm, SearchInput } from '../../styles/styledGlobal';
-import {
-  ContainerHome,
-  PostsContainer,
-} from './styled';
+import { ContainerElements, ContainerPost, CreatePostButton, PostsNotFoundContainer, PostsNotFoundTitle, SearchButton, SearchForm, SearchInput } from '../../styles/styledGlobal';
 
 const Index = () => {
   const [query, setQuery] = useState('');
@@ -25,7 +21,7 @@ const Index = () => {
   };
 
   return (
-    <ContainerHome>
+    <ContainerElements>
       <SearchForm onSubmit={handleSubmit}>
         <SearchInput
           type='text'
@@ -40,7 +36,7 @@ const Index = () => {
 
         <h2>Veja todas as postagens mais recentes</h2>
         {loading && <p>Carregando...</p>}
-        <PostsContainer>
+        <ContainerPost>
           {posts && posts.map(post => <PostDetailsHome key={post.id} post={post} />)}
           {posts && posts.length === 0 && (
             <PostsNotFoundContainer>
@@ -50,8 +46,8 @@ const Index = () => {
               </CreatePostButton>
             </PostsNotFoundContainer>
           )}
-        </PostsContainer>
-    </ContainerHome>
+        </ContainerPost>
+    </ContainerElements>
   );
 };
 
